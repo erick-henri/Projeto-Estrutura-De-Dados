@@ -19,7 +19,7 @@ public abstract class PessoaVO {
 		if ((nome != null) && (!nome.isEmpty())) {
 			this.nome = nome;
 		} else {
-			throw new ExceptionCampoInvalido("Nome inválido");
+			throw new ExceptionCampoInvalido("Nome invÃ¡lido");
 		}
 	}
 
@@ -32,7 +32,7 @@ public abstract class PessoaVO {
 		ResponsavelVO resp = new ResponsavelVO();
 		resp.setCpf(cpf);
 		if (aux.cpf(resp)) {
-			throw new ExceptionCampoInvalido("CPF já existe no banco de dados.");
+			throw new ExceptionCampoInvalido("CPF jÃ¡ existe no banco de dados.");
 		} else return;
 	}
 
@@ -48,20 +48,20 @@ public abstract class PessoaVO {
 							&& (!cpf.equals("99999999999"))) {
 						this.cpf = cpf;
 					} else {
-						// Digitar números repetidos
-						throw new ExceptionCampoInvalido("CPF não ser apenas números iguais");
+						// Digitar nï¿½meros repetidos
+						throw new ExceptionCampoInvalido("CPF nÃ£o ser apenas nÃºmeros iguais");
 					}
 				} else {
 					// Digitou uma letra
-					throw new ExceptionCampoInvalido("CPF só pode ter números");
+					throw new ExceptionCampoInvalido("CPF sÃ³ pode ter nÃºmeros");
 				}
 			} else {
-				// Tamanho inválido
+				// Tamanho invï¿½lido
 				throw new ExceptionCampoInvalido("CPF tem que ter pelo menos 11 caracteres");
 			}
 		} else {
 			// Se a variavel vier vazia
-			throw new ExceptionCampoInvalido("CPF inválido");
+			throw new ExceptionCampoInvalido("CPF invÃ¡lido");
 		}
 	}
 
@@ -71,18 +71,18 @@ public abstract class PessoaVO {
 
 	public void setEndereco(String estado, String cidade, String bairro, String rua, String numero)
 			throws ExceptionCampoInvalido {
-		// Irá verificar se todos os dados passados estão com
-		// alguma coisa escrita para então ser aceito
+		// IrÃ¡ verificar se todos os dados passados estÃ£o com
+		// alguma coisa escrita para entÃ£o ser aceito
 		if ((estado != null) && (cidade != null) && (bairro != null) && (rua != null) && (numero != null)) {
 			if ((!estado.isEmpty()) && (!cidade.isEmpty()) && (!bairro.isEmpty()) && (!rua.isEmpty())
 					&& (!numero.isEmpty())) {
 				this.endereco = bairro + ", " + rua + ", " + numero + ", " + cidade + ", " + estado;
 				// salvar tudo separado por , para ficar mais facil de verificar depois
 			} else {
-				throw new ExceptionCampoInvalido("Erro ao salvar o endereço");
+				throw new ExceptionCampoInvalido("Erro ao salvar o enderÃ§o");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Erro ao salvar o endereço");
+			throw new ExceptionCampoInvalido("Erro ao salvar o endereÃ§o");
 		}
 	}
 
@@ -96,19 +96,19 @@ public abstract class PessoaVO {
 	}
 
 	public void setTelefone(String telefone) throws ExceptionCampoInvalido {
-		// Ainda vendo como fazer uma validação melhor
+		// Ainda vendo como fazer uma validaÃ§Ã£o melhor
 		if ((telefone != null) && (!telefone.isEmpty())) {
 			if (telefone.length() == 11) {
 				if (telefone.substring(0, 10).matches("[0-9]*")) {
 					this.telefone = telefone;
 				} else {
-					throw new ExceptionCampoInvalido("Digitar apenas números em telefone");
+					throw new ExceptionCampoInvalido("Digitar apenas nÃºmeros em telefone");
 				}
 			} else {
 				throw new ExceptionCampoInvalido("Telefone tem que ter 11 digitos");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Telefone inválido");
+			throw new ExceptionCampoInvalido("Telefone invÃ¡lido");
 		}
 
 	}

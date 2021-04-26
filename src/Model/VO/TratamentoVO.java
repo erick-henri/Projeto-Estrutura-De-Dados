@@ -24,7 +24,7 @@ public class TratamentoVO {
 		if (animal != null) {
 			this.animal = animal; 
 		} else {
-			System.out.println("Opera��o inv�lida");
+			System.out.println("Operação inválida");
 		}
 	}
 	
@@ -37,10 +37,10 @@ public class TratamentoVO {
 			if ((descricao.length() <= 500) && (!descricao.isEmpty())) {
 				this.descricao = descricao;
 			} else {
-				throw new ExceptionCampoInvalido("Descri��o n�o pode ter mais do que 500 caracteres");
+				throw new ExceptionCampoInvalido("Descrição não pode ter mais do que 500 caracteres");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Digite alguma descri��o.");
+			throw new ExceptionCampoInvalido("Digite alguma descrição.");
 		}
 	}
 	

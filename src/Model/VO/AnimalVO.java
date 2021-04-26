@@ -17,7 +17,7 @@ public class AnimalVO {
 		if ((nome != null) && (!nome.isEmpty())) {
 			this.nome = nome;
 		} else {
-			throw new ExceptionCampoInvalido("Nome inv�lido");
+			throw new ExceptionCampoInvalido("Nome inválido");
 		}
 	}
 
@@ -38,7 +38,7 @@ public class AnimalVO {
 			if ((cuidados.length() <= 500) && (!cuidados.isEmpty())) {
 				this.cuidados = cuidados;
 			} else {
-				throw new ExceptionCampoInvalido("A descri��o dos cuidados n�o pode ter mais do que 500 caracteres");
+				throw new ExceptionCampoInvalido("A descrição dos cuidados não pode ter mais do que 500 caracteres");
 			}
 		} else {
 			throw new ExceptionCampoInvalido("Digite algum cuidado.");
@@ -54,10 +54,10 @@ public class AnimalVO {
 			if ((descricao.length() <= 500) && (!descricao.isEmpty())) {
 				this.descricao = descricao;
 			} else {
-				throw new ExceptionCampoInvalido("Descri��o n�o pode ter mais do que 500 caracteres");
+				throw new ExceptionCampoInvalido("Descrição não pode ter mais do que 500 caracteres");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Digite alguma cdescri��o.");
+			throw new ExceptionCampoInvalido("Digite alguma descrição.");
 		}
 	}
 	
@@ -69,7 +69,7 @@ public class AnimalVO {
 		if (cliente != null) {
 			this.cliente = cliente; 
 		} else {
-			System.out.println("Opera��o inv�lida");
+			System.out.println("Operação inválida");
 		}
 	}
 }

@@ -21,7 +21,7 @@ public class ProdutoVO {
 		if ((nome != null) && (!nome.isEmpty())) {
 			this.nome = nome;
 		} else {
-			throw new ExceptionCampoInvalido("Digite um nome v·lido");
+			throw new ExceptionCampoInvalido("Digite um nome v√°lido");
 		}
 	}
 
@@ -34,7 +34,7 @@ public class ProdutoVO {
 			if ((descricao.length() <= 500) && (!descricao.isEmpty())) {
 				this.descricao = descricao;
 			} else {
-				throw new ExceptionCampoInvalido("DescriÁ„o n„o pode ter mais do que 500 caracteres");
+				throw new ExceptionCampoInvalido("Descri√ß√£o n√£o pode ter mais do que 500 caracteres");
 			}
 		} else {
 			throw new ExceptionCampoInvalido("Digite alguma coisa para descrever o produto");
@@ -49,7 +49,7 @@ public class ProdutoVO {
 		if (preco > 0) {
 			this.preco = preco;
 		} else {
-			throw new ExceptionCampoInvalido("Digite um valor diferente de 0 para o preÁo");
+			throw new ExceptionCampoInvalido("Digite um valor diferente de 0 para o pre√ßo");
 		}
 	}
 
@@ -59,9 +59,9 @@ public class ProdutoVO {
 	}
 
 	public void setQuantidade(int quantidade) {
-		// esse mÈtodo È usado em estoqueVO para aumentar
-		// ou diminuir a quantidade, e l· mesmo
-		// verifica se a quantidade È valida ou n„o
+		// esse m√©todo √© usado em estoqueVO para aumentar
+		// ou diminuir a quantidade, e l√° mesmo
+		// verifica se a quantidade √© valida ou n√£o
 		this.quantidade += quantidade;
 	}
 
@@ -70,13 +70,13 @@ public class ProdutoVO {
 	}
 
 	public void setQuantiPedido(int quantiPedido) throws ExceptionCampoInvalido {
-		// mÈdodo usado em vendaVO para vericar se a quantidade
-		// pedida È aceita
+		// m√©dodo usado em vendaVO para vericar se a quantidade
+		// pedida √© aceita
 		if (quantiPedido > 0) {
 			if (quantiPedido <= quantidade) {
 				this.quantiPedido = quantiPedido;;
 			} else {
-				throw new ExceptionCampoInvalido("Quantidade do pedido n„o pode exceder o que tem em estoque");
+				throw new ExceptionCampoInvalido("Quantidade do pedido n√£o pode exceder o que tem em estoque");
 			}
 		}
 	}
@@ -88,7 +88,7 @@ public class ProdutoVO {
 	public void setPeso(double peso) throws ExceptionCampoInvalido {
 		if (peso > 0) {
 			this.peso = peso;
-			// verificar se o preÁo est· sendo um valor positivo e maior que zero
+			// verificar se o pre√ßo est√° sendo um valor positivo e maior que zero
 		} else {
 			throw new ExceptionCampoInvalido("Digite algo maior que 0 para o peso do produto");
 		}
@@ -110,7 +110,7 @@ public class ProdutoVO {
 		if ((prateleira != null) && (!prateleira.isEmpty())) {
 			this.prateleira = prateleira;
 		} else {
-			throw new ExceptionCampoInvalido("Digite uma informaÁ„o v·lida");
+			throw new ExceptionCampoInvalido("Digite uma informa√ß√£o v√°lida");
 		}
 	}
 }
