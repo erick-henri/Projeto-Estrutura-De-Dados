@@ -25,7 +25,7 @@ public class VendaVO {
 		if (cliente != null) {
 			this.cliente = cliente; // Atribui os valores ao metodo da classe cliente.
 		} else {
-			System.out.println("Operação inválida");
+			System.out.println("Operaï¿½ï¿½o invï¿½lida");
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class VendaVO {
 		if (responsavel != null) {
 			this.funcionario = responsavel;
 		} else {
-			System.out.println("Operação inválida");
+			System.out.println("Operaï¿½ï¿½o invï¿½lida");
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class VendaVO {
 
 	public void setData() {
 		// Utilizando a classe calendar para gerar todas as
-		// informações referente a data da compra.
+		// informaï¿½ï¿½es referente a data da compra.
 		Calendar data = Calendar.getInstance();
 		data.get(Calendar.YEAR);
 		data.get(Calendar.MONTH);
@@ -97,7 +97,7 @@ public class VendaVO {
 	}
 
 	public void setValor() {
-		// Irá salvar automaticamente o valor final da venda
+		// Irï¿½ salvar automaticamente o valor final da venda
 		// a partir dos dados presentes no carrinho
 		for (int i = 0; i < carrinho.size(); i++) {
 				valor = valor + (carrinho.get(i).getPreco() * carrinho.get(i).getQuantiPedido());
@@ -105,7 +105,7 @@ public class VendaVO {
 	}
 	
 	public void zerarValor() {
-		// Usado para zerar o valor caso retornar para alterações na compra
+		// Usado para zerar o valor caso retornar para alteraï¿½ï¿½es na compra
 		valor = 0;
 	}
 	
@@ -124,7 +124,7 @@ public class VendaVO {
 			if (!codigo.isBlank()) {
 				this.codigo = codigo;
 			} else {
-				System.out.println("Código invalido");
+				System.out.println("Cï¿½digo invalido");
 			}
 		} else {
 			System.out.println("Codigo invalido");
@@ -132,15 +132,15 @@ public class VendaVO {
 	}
 	
 	public void setCodigo() {
-		// esse código está gerando automaticamente um código para a venda
-		// só que antes de adicionar, tera que ser feita uma consulta no
-		// banco de dados para saber se o código já foi usado ou não
-		// já que estamos falando de valores aleatorios
+		// esse cï¿½digo estï¿½ gerando automaticamente um cï¿½digo para a venda
+		// sï¿½ que antes de adicionar, tera que ser feita uma consulta no
+		// banco de dados para saber se o cï¿½digo jï¿½ foi usado ou nï¿½o
+		// jï¿½ que estamos falando de valores aleatorios
 		Random r = new Random();
 		String aux = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 		String codigo = "";
 		while (codigo.length() < 35) {
-			// irá adicionar caractere por caractere a partir da string aux
+			// irï¿½ adicionar caractere por caractere a partir da string aux
 			codigo = codigo + aux.charAt(r.nextInt(62));
 		}
 		this.codigo = codigo;
@@ -162,7 +162,7 @@ public class VendaVO {
 		if (tratamento != null) {
 			this.tratamento = tratamento; 
 		} else {
-			System.out.println("Operação inválida");
+			System.out.println("Operaï¿½ï¿½o invï¿½lida");
 		}
 	}
 }

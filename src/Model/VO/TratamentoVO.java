@@ -3,10 +3,10 @@ package Model.VO;
 import Exception.ExceptionCampoInvalido;
 
 public class TratamentoVO {
-	public long id;
-	public AnimalVO animal;
-	public String descricao;
-	public double valor;
+	private long id;
+	private AnimalVO animal;
+	private String descricao;
+	private double valor;
 	
 	public long getId() {
 		return id;
@@ -24,7 +24,7 @@ public class TratamentoVO {
 		if (animal != null) {
 			this.animal = animal; 
 		} else {
-			System.out.println("Operação inválida");
+			System.out.println("Operaï¿½ï¿½o invï¿½lida");
 		}
 	}
 	
@@ -37,10 +37,10 @@ public class TratamentoVO {
 			if ((descricao.length() <= 500) && (!descricao.isEmpty())) {
 				this.descricao = descricao;
 			} else {
-				throw new ExceptionCampoInvalido("Descrição não pode ter mais do que 500 caracteres");
+				throw new ExceptionCampoInvalido("Descriï¿½ï¿½o nï¿½o pode ter mais do que 500 caracteres");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Digite alguma descrição.");
+			throw new ExceptionCampoInvalido("Digite alguma descriï¿½ï¿½o.");
 		}
 	}
 	
