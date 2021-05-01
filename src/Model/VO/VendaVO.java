@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
 
-import Exception.ExceptionCampoInvalido;
-
 public class VendaVO {
 	private ClienteVO cliente;
-	private FuncionarioVO funcionario;
+	private UsuarioVO funcionario;
 	private ArrayList <ProdutoVO> carrinho = new ArrayList<ProdutoVO>();
 	private Calendar data;
 	private double valor;
@@ -25,19 +23,19 @@ public class VendaVO {
 		if (cliente != null) {
 			this.cliente = cliente; // Atribui os valores ao metodo da classe cliente.
 		} else {
-			System.out.println("Opera√ß√£o inv√°lida");
+			System.out.println("OperaÁ„o inv·lida");
 		}
 	}
 	
-	public FuncionarioVO getFuncionario() {
+	public UsuarioVO getFuncionario() {
 		return funcionario;
 	}
 
-	public void setFuncionario(FuncionarioVO responsavel) {
+	public void setFuncionario(UsuarioVO responsavel) {
 		if (responsavel != null) {
 			this.funcionario = responsavel;
 		} else {
-			System.out.println("Opera√ß√£o inv√°lida");
+			System.out.println("Opera√ß√£o inv·lida");
 		}
 	}
 	
@@ -132,10 +130,10 @@ public class VendaVO {
 	}
 	
 	public void setCodigo() {
-		// esse c√≥digo est√° gerando automaticamente um c√≥digo para a venda
-		// s√≥ que antes de adicionar, tera que ser feita uma consulta no
-		// banco de dados para saber se o c√≥digo j√° foi usado ou n√£o
-		// j√° que estamos falando de valores aleatorios
+		// esse cÛdigo est·° gerando automaticamente um cÛdigo para a venda
+		// s„o que antes de adicionar, tera que ser feita uma consulta no
+		// banco de dados para saber se o cÛdigo j√° foi usado ou n„o
+		// j· que estamos falando de valores aleatorios
 		Random r = new Random();
 		String aux = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 		String codigo = "";
@@ -162,7 +160,7 @@ public class VendaVO {
 		if (tratamento != null) {
 			this.tratamento = tratamento; 
 		} else {
-			System.out.println("Opera√ß√£o inv√°lida");
+			System.out.println("Opera√ß√£o inv·lida");
 		}
 	}
 }

@@ -1,10 +1,8 @@
 package Model.VO;
 
 import Exception.ExceptionCampoInvalido;
-import Exception.ExceptionLoginExistente;
-// import Model.dao.FuncionarioDAO;
 
-public class FuncionarioVO extends PessoaVO {
+public class UsuarioVO extends PessoaVO {
 	private String usuario;
 	private String senha;
 	private long id;
@@ -13,27 +11,11 @@ public class FuncionarioVO extends PessoaVO {
 		return usuario;
 	}
 
-	public void setUsuarioAux(String usuario) throws ExceptionLoginExistente {
-		// usado para verificar se o usuario já existe no banco de dados
-		FuncionarioDAO aux = new FuncionarioDAO();
-		FuncionarioVO x = new FuncionarioVO();
-		try {
-			x.setUsuario(usuario);
-		} catch (ExceptionCampoInvalido e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		if (aux.buscarLogin(x)) {
-			throw new ExceptionLoginExistente("Usuário já existe");
-		} else return;
-	}
-
 	public void setUsuario(String usuario) throws ExceptionCampoInvalido {
 		if ((usuario != null) && (!usuario.isEmpty())) {
 			this.usuario = usuario;
 		} else {
-			throw new ExceptionCampoInvalido("Usuário inválido");
+			throw new ExceptionCampoInvalido("Usu�rio inv�lido");
 		}
 	}
 
@@ -49,7 +31,7 @@ public class FuncionarioVO extends PessoaVO {
 				throw new ExceptionCampoInvalido("Senha precisa ter pelo menos 5 caracteres");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Senha inválida");
+			throw new ExceptionCampoInvalido("Senha inv�lida");
 		}
 	}
 

@@ -1,8 +1,6 @@
 package Model.VO;
 
 import Exception.ExceptionCampoInvalido;
-import projeto.model.dao.PessoaDAO;
-import projeto.model.vo.ResponsavelVO;
 
 public abstract class PessoaVO {
 	private String nome;
@@ -27,15 +25,6 @@ public abstract class PessoaVO {
 		return cpf;
 	}
 
-	public void setCpfAux(String cpf) throws ExceptionCampoInvalido {
-		PessoaDAO<ResponsavelVO> aux = new PessoaDAO<ResponsavelVO>();
-		ResponsavelVO resp = new ResponsavelVO();
-		resp.setCpf(cpf);
-		if (aux.cpf(resp)) {
-			throw new ExceptionCampoInvalido("CPF jÃ¡ existe no banco de dados.");
-		} else return;
-	}
-
 	public void setCpf(String cpf) throws ExceptionCampoInvalido {
 		// Validando
 		if ((cpf != null) && (!cpf.isEmpty())) {
@@ -48,20 +37,20 @@ public abstract class PessoaVO {
 							&& (!cpf.equals("99999999999"))) {
 						this.cpf = cpf;
 					} else {
-						// Digitar nï¿½meros repetidos
-						throw new ExceptionCampoInvalido("CPF nÃ£o ser apenas nÃºmeros iguais");
+						// Digitar números repetidos
+						throw new ExceptionCampoInvalido("CPF não ser apenas números iguais");
 					}
 				} else {
 					// Digitou uma letra
-					throw new ExceptionCampoInvalido("CPF sÃ³ pode ter nÃºmeros");
+					throw new ExceptionCampoInvalido("CPF só pode ter números");
 				}
 			} else {
-				// Tamanho invï¿½lido
+				// Tamanho inválido
 				throw new ExceptionCampoInvalido("CPF tem que ter pelo menos 11 caracteres");
 			}
 		} else {
 			// Se a variavel vier vazia
-			throw new ExceptionCampoInvalido("CPF invÃ¡lido");
+			throw new ExceptionCampoInvalido("CPF inválido");
 		}
 	}
 
@@ -71,18 +60,18 @@ public abstract class PessoaVO {
 
 	public void setEndereco(String estado, String cidade, String bairro, String rua, String numero)
 			throws ExceptionCampoInvalido {
-		// IrÃ¡ verificar se todos os dados passados estÃ£o com
-		// alguma coisa escrita para entÃ£o ser aceito
+		// Irá¡ verificar se todos os dados passados estão com
+		// alguma coisa escrita para então ser aceito
 		if ((estado != null) && (cidade != null) && (bairro != null) && (rua != null) && (numero != null)) {
 			if ((!estado.isEmpty()) && (!cidade.isEmpty()) && (!bairro.isEmpty()) && (!rua.isEmpty())
 					&& (!numero.isEmpty())) {
 				this.endereco = bairro + ", " + rua + ", " + numero + ", " + cidade + ", " + estado;
 				// salvar tudo separado por , para ficar mais facil de verificar depois
 			} else {
-				throw new ExceptionCampoInvalido("Erro ao salvar o enderÃ§o");
+				throw new ExceptionCampoInvalido("Erro ao salvar o enderço");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Erro ao salvar o endereÃ§o");
+			throw new ExceptionCampoInvalido("Erro ao salvar o endereço");
 		}
 	}
 
@@ -96,19 +85,19 @@ public abstract class PessoaVO {
 	}
 
 	public void setTelefone(String telefone) throws ExceptionCampoInvalido {
-		// Ainda vendo como fazer uma validaÃ§Ã£o melhor
+		// Ainda vendo como fazer uma validação melhor
 		if ((telefone != null) && (!telefone.isEmpty())) {
 			if (telefone.length() == 11) {
 				if (telefone.substring(0, 10).matches("[0-9]*")) {
 					this.telefone = telefone;
 				} else {
-					throw new ExceptionCampoInvalido("Digitar apenas nÃºmeros em telefone");
+					throw new ExceptionCampoInvalido("Digitar apenas números em telefone");
 				}
 			} else {
 				throw new ExceptionCampoInvalido("Telefone tem que ter 11 digitos");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Telefone invÃ¡lido");
+			throw new ExceptionCampoInvalido("Telefone inválido");
 		}
 
 	}

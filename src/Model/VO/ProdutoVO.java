@@ -11,7 +11,7 @@ public class ProdutoVO {
 	private int quantidade = 0; 
 	private int quantiPedido = 0;
 	private long id;
-	private String prateleira; 
+	private String codigo; 
 	
 	public String getNome() {
 		return nome;
@@ -102,13 +102,13 @@ public class ProdutoVO {
 		this.id = id;
 	}
 
-	public String getPrateleira() {
-		return prateleira;
+	public String getCodigo() {
+		return codigo;
 	}
 	
-	public void setPrateleira(String prateleira) throws ExceptionCampoInvalido {
-		if ((prateleira != null) && (!prateleira.isEmpty())) {
-			this.prateleira = prateleira;
+	public void setCodigo(String codigo) throws ExceptionCampoInvalido {
+		if ((codigo != null) && (!codigo.isEmpty())) {
+			this.codigo = codigo;
 		} else {
 			throw new ExceptionCampoInvalido("Digite uma informação válida");
 		}
