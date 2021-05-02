@@ -23,7 +23,7 @@ public class ProdutoBO {
 		aux.excluir(prod);
 	}
 
-	public List<ProdutoVO> listar (ProdutoVO prod) {
+	public List<ProdutoVO> listar () {
 		//Listar todos os produtos existentes
 		ResultSet rs = aux.listar();
 		List<ProdutoVO> produtos = new ArrayList<ProdutoVO>();
@@ -32,7 +32,8 @@ public class ProdutoBO {
 				ProdutoVO p = new ProdutoVO();
 				p.setNome(rs.getString("nome"));
 				p.setPreco(rs.getDouble("preco"));
-				p.setQuantidade(rs.getInt("quantidadeTotal"));
+				p.setPeso(rs.getDouble("peso"));
+				p.setQuantidade(rs.getInt("quantidade"));
 				p.setDescricao(rs.getString("descricao"));
 				p.setId(rs.getLong("idproduto"));
 				p.setCodigo(rs.getString("codigo"));
@@ -59,6 +60,7 @@ public class ProdutoBO {
 				produto.setPreco(rs.getDouble("preco"));
 				produto.setPeso(rs.getDouble("peso"));
 				produto.setDescricao(rs.getString("descricao"));
+				produto.setQuantidade(rs.getInt("quantidade"));
 				produto.setId(rs.getLong("idproduto"));
 				produto.setCodigo(rs.getString("codigo"));
 			}

@@ -1,7 +1,7 @@
 package Model.VO;
 
 import Exception.ExceptionCampoInvalido;
-// import projeto.model.dao.ProdutoDAO;
+import Model.DAO.ProdutoDAO;
 
 public class ProdutoVO {
 	private String nome;
@@ -52,7 +52,7 @@ public class ProdutoVO {
 			throw new ExceptionCampoInvalido("Digite um valor diferente de 0 para o preço");
 		}
 	}
-
+	
 	
 	public int getQuantidade() {
 		return quantidade;
@@ -111,6 +111,16 @@ public class ProdutoVO {
 			this.codigo = codigo;
 		} else {
 			throw new ExceptionCampoInvalido("Digite uma informação válida");
+		}
+	}
+	
+	public void setCodigoAux(String codigo) throws ExceptionCampoInvalido {
+		//metodo usado apenas para que n�o hajam codigos de barras iguais
+		ProdutoDAO aux = new ProdutoDAO();
+		ProdutoVO x = new ProdutoVO();
+		x.setCodigo(codigo);
+		if (aux.verificarCodigo(x)){
+			throw new ExceptionCampoInvalido("Serie j� existe no banco de dados");
 		}
 	}
 }
