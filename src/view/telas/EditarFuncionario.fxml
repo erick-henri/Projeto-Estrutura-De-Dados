@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_EditarFuncionario">
+   <children>
+      <ImageView fitHeight="128.0" fitWidth="600.0" layoutX="3.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/barra.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="187.0" layoutY="27.0" text="Editar Funcionário">
+         <font>
+            <Font name="Verdana Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="70.0" layoutY="90.0" text="Nome">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="132.0" prefHeight="16.0" prefWidth="38.0" text="CPF">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="216.0" text="Rua">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="132.0" text="Telefone">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="216.0" text="Número">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nome" layoutX="69.0" layoutY="106.0" prefHeight="26.0" prefWidth="464.0" promptText="Nome">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="telefone" layoutX="300.0" layoutY="148.0" prefHeight="25.0" prefWidth="233.0" promptText="Telefone">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="numero" layoutX="299.0" layoutY="232.0" prefHeight="25.0" prefWidth="233.0" promptText="Número">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="rua" layoutX="68.0" layoutY="232.0" prefHeight="25.0" prefWidth="223.0" promptText="Rua">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Button fx:id="editar" alignment="CENTER" layoutX="446.0" layoutY="333.0" mnemonicParsing="false" onAction="#editar" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #34FF48; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Editar">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="voltar" alignment="CENTER" layoutX="46.0" layoutY="333.0" mnemonicParsing="false" onAction="#voltar" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #A8FF39; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Voltar">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="mensagem" alignment="CENTER" layoutX="4.0" layoutY="73.0" prefHeight="17.0" prefWidth="595.0" text="Label" visible="false">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="estado" layoutX="69.0" layoutY="190.0" prefHeight="26.0" prefWidth="146.0" promptText="Estado">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="cidade" layoutX="228.0" layoutY="190.0" prefHeight="26.0" prefWidth="146.0" promptText="Cidade">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="228.0" layoutY="174.0" text="Cidade">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="70.0" layoutY="174.0" text="Estado">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="bairro" layoutX="386.0" layoutY="190.0" prefHeight="26.0" prefWidth="146.0" promptText="Bairro">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="386.0" layoutY="174.0" text="Bairro">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usuario" layoutX="67.0" layoutY="274.0" prefHeight="25.0" prefWidth="223.0" promptText="Usuário">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="299.0" layoutY="258.0" text="Senha">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="258.0" text="Usuário">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="senha" layoutX="300.0" layoutY="275.0" prefHeight="25.0" prefWidth="233.0" promptText="Senha">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </PasswordField>
+      <TextField fx:id="cpf" layoutX="68.0" layoutY="148.0" prefHeight="25.0" prefWidth="223.0" promptText="CPF">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </TextField>
+   </children>
+</Pane>

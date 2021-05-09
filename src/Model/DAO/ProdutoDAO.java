@@ -53,7 +53,7 @@ public class ProdutoDAO extends BaseDAO<ProdutoVO> {
 	public void editar(ProdutoVO vo) {
 		// Aqui irá editar os produtos contatno que existam
 		String sql = "update produto set nome = ?, peso = ?, "
-				+ "preco = ?, descricao = ?, codigo = ? where idproduto = ? ";
+				+ "preco = ?, descricao = ?, codigo = ?, quantidade = ? where idproduto = ?";
 		
 		PreparedStatement ptst;
 		try {
@@ -63,7 +63,8 @@ public class ProdutoDAO extends BaseDAO<ProdutoVO> {
 			ptst.setDouble(3, vo.getPreco());
 			ptst.setString(4, vo.getDescricao());
 			ptst.setString(5, vo.getCodigo());
-			ptst.setLong(6, vo.getId());
+			ptst.setInt(6, vo.getQuantidade());
+			ptst.setLong(7, vo.getId());
 			int linhas = ptst.executeUpdate();
 			if (linhas == 0) {
 				throw new SQLException("Nada foi editado.");
@@ -115,7 +116,7 @@ public class ProdutoDAO extends BaseDAO<ProdutoVO> {
 	@Override
 	public ResultSet listar() {
 		// selecionar todos os itens dentro da tabela produto
-		String sql = "select * from produto where idproduto = ?";
+		String sql = "select * from produto";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		try {
@@ -151,7 +152,7 @@ public class ProdutoDAO extends BaseDAO<ProdutoVO> {
 		//Esse codigo é apenas para verificar os codigos dos produtos
 		//para que quando adicionar algum produto novo, eles não tenham o mesmo codigo
 		
-		String sql = "select * from produto where serie = ?";
+		String sql = "select * from produto where codigo = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		
@@ -191,5 +192,7 @@ public class ProdutoDAO extends BaseDAO<ProdutoVO> {
 		super.closeConnection();
 		return rs;
 	}
+	
+	
 
 }

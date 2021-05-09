@@ -1,6 +1,9 @@
 package Model.VO;
 
 import Exception.ExceptionCampoInvalido;
+import Exception.ExceptionLoginExistente;
+import Model.DAO.UsuarioDAO;
+import Model.VO.UsuarioVO;
 
 public class UsuarioVO extends PessoaVO {
 	private String usuario;
@@ -11,6 +14,21 @@ public class UsuarioVO extends PessoaVO {
 		return usuario;
 	}
 
+	public void setUsuarioAux(String usuario) throws ExceptionLoginExistente {
+		// usado para verificar se o usuario já existe no banco de dados
+		UsuarioDAO aux = new UsuarioDAO();
+		UsuarioVO x = new UsuarioVO();
+		try {
+			x.setUsuario(usuario);
+		} catch (ExceptionCampoInvalido e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (aux.buscarLogin(x)) {
+			throw new ExceptionLoginExistente("Usuário já existe");
+		} else return;
+	}
 	public void setUsuario(String usuario) throws ExceptionCampoInvalido {
 		if ((usuario != null) && (!usuario.isEmpty())) {
 			this.usuario = usuario;

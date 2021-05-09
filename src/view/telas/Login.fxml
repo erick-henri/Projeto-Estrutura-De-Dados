@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_Login">
+   <children>
+      <ImageView fitHeight="128.0" fitWidth="600.0" layoutX="3.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/barra.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="164.0" layoutY="149.0" text="Usuário">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="164.0" layoutY="210.0" prefHeight="16.0" prefWidth="58.0" text="Senha">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usuario" layoutX="164.0" layoutY="175.0" prefHeight="26.0" prefWidth="272.0" promptText="Usuário">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Button fx:id="login" alignment="CENTER" layoutX="215.0" layoutY="310.0" mnemonicParsing="false" onAction="#logar" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: #34FF48; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Entrar">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="mensagem" alignment="CENTER" layoutX="3.0" layoutY="279.0" prefHeight="17.0" prefWidth="595.0" text="Label" visible="false">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="senha" layoutX="164.0" layoutY="237.0" prefHeight="25.0" prefWidth="272.0" promptText="Senha">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </PasswordField>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
