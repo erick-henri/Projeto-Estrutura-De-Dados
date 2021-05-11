@@ -1,6 +1,8 @@
 package Model.VO;
 
 import Exception.ExceptionCampoInvalido;
+import Model.DAO.PessoaDAO;
+import Model.VO.UsuarioVO;
 
 public abstract class PessoaVO {
 	private String nome;
@@ -25,6 +27,14 @@ public abstract class PessoaVO {
 		return cpf;
 	}
 
+	public void setCpfAux(String cpf) throws ExceptionCampoInvalido {
+		PessoaDAO<UsuarioVO> aux = new PessoaDAO<UsuarioVO>();
+		UsuarioVO resp = new UsuarioVO();
+		resp.setCpf(cpf);
+		if (aux.cpf(resp)) {
+			throw new ExceptionCampoInvalido("CPF já existe no banco de dados.");
+		} else return;
+	}
 	public void setCpf(String cpf) throws ExceptionCampoInvalido {
 		// Validando
 		if ((cpf != null) && (!cpf.isEmpty())) {

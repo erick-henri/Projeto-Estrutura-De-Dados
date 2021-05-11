@@ -155,8 +155,9 @@ public class Controller_ListarProduto implements Initializable {
 	}
 
 	@FXML
-	public void voltar(ActionEvent event) {
 
+	public void voltar(ActionEvent event) throws Exception {
+		Telas.telaMenu();
 	}
 
 }

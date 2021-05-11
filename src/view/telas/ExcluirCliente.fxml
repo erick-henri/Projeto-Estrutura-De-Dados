@@ -92,9 +92,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="mensagem" alignment="CENTER" layoutX="4.0" layoutY="73.0" prefHeight="17.0" prefWidth="595.0" text="Label" visible="false">
+      <Label fx:id="mensagem" alignment="TOP_CENTER" layoutX="4.0" layoutY="57.0" prefHeight="33.0" prefWidth="595.0" text="Label" visible="false">
          <font>
-            <Font name="Verdana" size="13.0" />
+            <Font name="Verdana Bold" size="13.0" />
          </font>
       </Label>
       <TextField fx:id="estado" editable="false" layoutX="69.0" layoutY="204.0" prefHeight="26.0" prefWidth="146.0" promptText="Estado">

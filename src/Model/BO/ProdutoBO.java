@@ -2,14 +2,13 @@ package Model.BO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import Model.DAO.ProdutoDAO;
 import Model.VO.ProdutoVO;
+import myList.ListaEncadeadaDupla;
+import myList.MyInterfaceList;
 import Exception.ExceptionCampoInvalido;
 
-public class ProdutoBO {
+public class ProdutoBO extends BaseBO<ProdutoVO> implements ProdutoInterBO{
 	ProdutoDAO aux = new ProdutoDAO();
 	public void cadastrar(ProdutoVO prod) {
 		aux.cadastrar(prod);
@@ -23,10 +22,10 @@ public class ProdutoBO {
 		aux.excluir(prod);
 	}
 
-	public List<ProdutoVO> listar () {
+	public	MyInterfaceList<ProdutoVO> listar () {
 		//Listar todos os produtos existentes
 		ResultSet rs = aux.listar();
-		List<ProdutoVO> produtos = new ArrayList<ProdutoVO>();
+		MyInterfaceList<ProdutoVO> produtos = new ListaEncadeadaDupla<ProdutoVO>();
 		try {
 			while (rs.next()) {
 				ProdutoVO p = new ProdutoVO();
@@ -74,9 +73,9 @@ public class ProdutoBO {
 		return produto;
 	}
 	
-	public ArrayList<ProdutoVO> findByName(ProdutoVO prod){
+	public MyInterfaceList<ProdutoVO> findByName(ProdutoVO prod){
 		ResultSet rs = aux.findByName(prod);
-		ArrayList<ProdutoVO> produtos = new ArrayList<ProdutoVO>();
+		MyInterfaceList<ProdutoVO> produtos = new ListaEncadeadaDupla<ProdutoVO>();
 		try {
 			while (rs.next()) {
 				ProdutoVO produto = new ProdutoVO();
@@ -99,9 +98,9 @@ public class ProdutoBO {
 		return produtos;
 	}
 	
-	public ArrayList<ProdutoVO> findByCode(ProdutoVO prod){
+	public MyInterfaceList<ProdutoVO> findByCode(ProdutoVO prod){
 		ResultSet rs = aux.findByCode(prod);
-		ArrayList<ProdutoVO> produtos = new ArrayList<ProdutoVO>();
+		MyInterfaceList<ProdutoVO> produtos = new ListaEncadeadaDupla<ProdutoVO>();
 		try {
 			while (rs.next()) {
 				ProdutoVO produto = new ProdutoVO();

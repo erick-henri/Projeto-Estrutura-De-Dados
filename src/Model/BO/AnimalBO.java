@@ -1,31 +1,44 @@
 package Model.BO;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Model.VO.AnimalVO;
-import Model.VO.ClienteVO;
+import myList.MyInterfaceList;
 
-public class AnimalBO {
-	public void cadastrar(AnimalVO animal) {
+public class AnimalBO extends BaseBO<AnimalVO>{
 
-	}
-
-	public void editar(AnimalVO animal) {
-
-	}
-
-	public void excluir(AnimalVO animal) {
-
-	}
-
-	public AnimalVO findByOwner(AnimalVO animal) {
-		return animal;
-	}
-	
-	public List<AnimalVO> listarPorDono (ClienteVO cliente){
-		List<AnimalVO> animais = new ArrayList<AnimalVO>();
+	@Override
+	public void cadastrar(AnimalVO vo) {
+		// TODO Auto-generated method stub
 		
-		return animais;
 	}
+
+	@Override
+	public void editar(AnimalVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void excluir(AnimalVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public AnimalVO findById(AnimalVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MyInterfaceList<AnimalVO> listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MyInterfaceList<AnimalVO> findByName(AnimalVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
