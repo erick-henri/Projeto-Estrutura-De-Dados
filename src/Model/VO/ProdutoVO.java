@@ -8,11 +8,11 @@ public class ProdutoVO {
 	private String descricao;
 	private double peso;
 	private double preco;
-	private int quantidade = 0; 
+	private int quantidade = 0;
 	private int quantiPedido = 0;
 	private long id;
-	private String codigo; 
-	
+	private String codigo;
+
 	public String getNome() {
 		return nome;
 	}
@@ -52,8 +52,7 @@ public class ProdutoVO {
 			throw new ExceptionCampoInvalido("Digite um valor diferente de 0 para o preÃ§o");
 		}
 	}
-	
-	
+
 	public int getQuantidade() {
 		return quantidade;
 	}
@@ -73,11 +72,19 @@ public class ProdutoVO {
 		// mÃ©dodo usado em vendaVO para vericar se a quantidade
 		// pedida Ã© aceita
 		if (quantiPedido > 0) {
-			if (quantiPedido <= quantidade) {
-				this.quantiPedido = quantiPedido;;
+			if (quantiPedido + this.quantiPedido <= quantidade) {
+				this.quantiPedido += quantiPedido;
 			} else {
-				throw new ExceptionCampoInvalido("Quantidade do pedido nÃ£o pode exceder o que tem em estoque");
+				throw new ExceptionCampoInvalido("Quantidade do pedido não pode exceder o que tem em estoque");
 			}
+		}
+	}
+	
+	public void diminuirQuantiPedido (int quantiPedido) throws ExceptionCampoInvalido {
+		if (quantiPedido <= this.quantiPedido) {
+			this.quantiPedido -= quantiPedido;
+		} else {
+			throw new ExceptionCampoInvalido("Só é possivel remover " + this.quantiPedido + " do carrinho.");
 		}
 	}
 
@@ -105,7 +112,7 @@ public class ProdutoVO {
 	public String getCodigo() {
 		return codigo;
 	}
-	
+
 	public void setCodigo(String codigo) throws ExceptionCampoInvalido {
 		if ((codigo != null) && (!codigo.isEmpty())) {
 			this.codigo = codigo;
@@ -113,15 +120,14 @@ public class ProdutoVO {
 			throw new ExceptionCampoInvalido("Digite uma informaÃ§Ã£o vÃ¡lida");
 		}
 	}
-	
+
 	public void setCodigoAux(String codigo) throws ExceptionCampoInvalido {
-		//metodo usado apenas para que não hajam codigos de barras iguais
+		// metodo usado apenas para que não hajam codigos de barras iguais
 		ProdutoDAO aux = new ProdutoDAO();
 		ProdutoVO x = new ProdutoVO();
 		x.setCodigo(codigo);
-		if (aux.verificarCodigo(x)){
+		if (aux.verificarCodigo(x)) {
 			throw new ExceptionCampoInvalido("Serie já existe no banco de dados");
 		}
 	}
 }
-
