@@ -13,6 +13,8 @@ import Exception.ExceptionCampoVazio;
 import view.Telas;
 
 public class Controller_CadastrarCliente {
+	private static boolean verificar; //variavel usada para verificar
+	// se esta cadastrando a partir do ListarCliente ou a partir de Venda
 
 	@FXML
 	private TextField telefone;
@@ -59,7 +61,12 @@ public class Controller_CadastrarCliente {
 			cli.setEndereco(estado.getText(), cidade.getText(), bairro.getText(), rua.getText(), numero.getText());
 			cli.setTelefone(telefone.getText());
 			salvar.cadastrar(cli);
-			Telas.listarCliente();
+			if (verificar) {
+				verificar = false;
+				Telas.venda();
+			} else {
+				Telas.listarCliente();
+			}
 		} catch (ExceptionCampoInvalido e) {
 			mensagem.setTextFill(Color.web("red"));
 			mensagem.setText(e.getMessage());
@@ -69,7 +76,12 @@ public class Controller_CadastrarCliente {
 
 	@FXML
 	public void voltar(ActionEvent event) throws Exception {
-		Telas.listarCliente();
+		if (verificar) {
+			verificar = false;
+			Telas.venda();
+		} else {
+			Telas.listarCliente();
+		}
 	}
 
 	private void verificarCampo(TextField tf) throws ExceptionCampoVazio {
@@ -81,4 +93,13 @@ public class Controller_CadastrarCliente {
 		} else
 			return;
 	}
+	
+	public static boolean getVerificar() {
+		return verificar;
+	}
+	
+	public static void setVerificar(boolean verificar) {
+		Controller_CadastrarCliente.verificar = verificar;
+	}
+
 }

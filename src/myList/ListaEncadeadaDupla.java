@@ -80,7 +80,7 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 		return null;
 	}
 
-	public int searchByValue(O valor) {
+	public int searchByValue(Object valor) {
 		// producarando pelo valor
 		Node aux = head;
 		while (aux != null) {
@@ -90,7 +90,6 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 			aux = aux.next;
 		}
 		return -1;
-
 	}
 
 	@Override
@@ -107,6 +106,57 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 		}
 		size++;
 		return true;
+	}
+	
+	@Override
+	public boolean remove(Object valor) {
+		int id = searchByValue(valor);
+		Node removido = searchById(id);
+
+		if (head == null) {
+			System.out.println("Lista vazia!");
+			return false;
+		}
+
+		if (removido == null) {
+			System.out.println("Criterio invalido!");
+			return false;
+		}
+
+		Node anterior = removido.prev;
+		Node posterior = removido.next;
+
+		if (head == tail) {
+			head = null;
+			tail = null;
+		} else {
+
+			if (head == removido) {
+				head = head.next;
+				head.prev = null;
+				removido.next = null;
+			} else if (tail == removido) {
+				tail.prev = null;
+				tail = anterior;
+				tail.next = null;
+
+			} else {
+				removido.next = null; // retirar o item removido da lista
+				removido.prev = null;
+
+				if (anterior != null) { // primeiro verifica se existe um item anterior
+					anterior.next = posterior; // e adiciona o prev do removido nele
+				}
+
+				if (posterior != null) { // primeiro verifica se existe um item posterior
+					posterior.prev = anterior; // e adiciona o next do removido nele
+				}
+			}
+		}
+
+		size--;
+		System.out.println("Valor removido!");
+		return false;
 	}
 
 	@Override
@@ -241,12 +291,6 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 	public ListIterator<O> listIterator(int arg0) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public boolean remove(Object arg0) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

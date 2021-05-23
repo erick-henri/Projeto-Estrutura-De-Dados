@@ -25,7 +25,7 @@ import Model.BO.ClienteBO;
 import Model.VO.PessoaVO;
 import view.Telas;
 
-public class Controller_ListarCliente implements Initializable{
+public class Controller_Venda implements Initializable{
 	private ObservableList<String> cb;
 	
 	@FXML
@@ -36,20 +36,18 @@ public class Controller_ListarCliente implements Initializable{
 	private TableColumn<ClienteVO, String> nome;
 	@FXML
 	private TableColumn<ClienteVO, Long> id;	
+	
 	@FXML
 	private TextField pesquisa;
 	@FXML
 	private Label mensagem;
 	@FXML
 	private ComboBox<String> escolha;
+	
 	@FXML
 	private Button pesquisar;
 	@FXML
-	private Button editar;
-	@FXML
-	private Button animais;
-	@FXML
-	private Button excluir;
+	private Button iniciar;
 	@FXML
 	private Button voltar;
 	@FXML
@@ -74,33 +72,8 @@ public class Controller_ListarCliente implements Initializable{
 
 	@FXML
 	public void cadastrar(ActionEvent event) throws Exception {
+		Controller_CadastrarCliente.setVerificar(true);
 		Telas.cadastrarCliente();
-	}
-
-	@FXML
-	public void editar(ActionEvent event) throws Exception {
-		ClienteVO editando = lista.getSelectionModel().getSelectedItem();
-		if (editando != null) {
-			ClienteBO aux = new ClienteBO();
-			Controller_EditarCliente.setEditando(aux.findById(editando));
-			Telas.editarCliente();
-		}
-		mensagem.setTextFill(Color.web("red"));
-		mensagem.setText("Selecione um cliente para editar");
-		mensagem.setVisible(true);
-	}
-
-	@FXML
-	public void excluir(ActionEvent event) throws Exception {
-		ClienteVO excluindo = lista.getSelectionModel().getSelectedItem();
-		if (excluindo != null) {
-			ClienteBO aux = new ClienteBO();
-			Controller_ExcluirCliente.setExcluindo(aux.findById(excluindo));
-			Telas.excluirCliente();
-		}
-		mensagem.setTextFill(Color.web("red"));
-		mensagem.setText("Selecione um cliente para excluir");
-		mensagem.setVisible(true);
 	}
 
 	@FXML
@@ -152,15 +125,15 @@ public class Controller_ListarCliente implements Initializable{
 	}
 	
 	@FXML
-	public void animais(ActionEvent event) throws Exception {
+	public void iniciar(ActionEvent event) throws Exception {
 		ClienteVO cliente = lista.getSelectionModel().getSelectedItem();
 		if (cliente != null) {
 			ClienteBO aux = new ClienteBO();
-			Controller_ListarAnimal.setCliente(aux.findById(cliente));
-			Telas.listarAnimal();
+			Controller_CarrinhoVenda.setCliente(aux.findById(cliente));
+			Telas.carrinhoVenda();
 		}
 		mensagem.setTextFill(Color.web("red"));
-		mensagem.setText("Selecione um cliente para verificar os animais");
+		mensagem.setText("Selecione um cliente para iniciar a compra (ou cadastra um novo cliente)");
 		mensagem.setVisible(true);
 	}
 	
