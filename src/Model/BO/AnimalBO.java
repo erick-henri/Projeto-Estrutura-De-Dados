@@ -1,5 +1,6 @@
 package Model.BO;
 
+<<<<<<< HEAD
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -18,22 +19,48 @@ public class AnimalBO extends BaseBO<AnimalVO> {
 	@Override
 	public void cadastrar(AnimalVO vo) {
 		animal.cadastrar(vo);
+=======
+import Model.VO.AnimalVO;
+import myList.MyInterfaceList;
 
+public class AnimalBO extends BaseBO<AnimalVO>{
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
+
+	@Override
+	public void cadastrar(AnimalVO vo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void editar(AnimalVO vo) {
+<<<<<<< HEAD
 		animal.editar(vo);
 
+=======
+		// TODO Auto-generated method stub
+		
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 	}
 
 	@Override
 	public void excluir(AnimalVO vo) {
+<<<<<<< HEAD
 		animal.excluir(vo);
+=======
+		// TODO Auto-generated method stub
+		
+	}
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 
+	@Override
+	public AnimalVO findById(AnimalVO vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
+<<<<<<< HEAD
 	public AnimalVO findById(AnimalVO vo) {
 		//procurar um animal no banco de dados que possua o id digitado
 				ResultSet rs = animal.findById(vo);
@@ -113,4 +140,17 @@ public class AnimalBO extends BaseBO<AnimalVO> {
 		return null;
 	}
 
+=======
+	public MyInterfaceList<AnimalVO> listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MyInterfaceList<AnimalVO> findByName(AnimalVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 }

@@ -10,7 +10,10 @@ import Exception.ExceptionCampoInvalido;
 import Model.BO.ClienteBO;
 import Model.VO.ClienteVO;
 import Exception.ExceptionCampoVazio;
+<<<<<<< HEAD
 import Exception.ExceptionLoginExistente;
+=======
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 import view.Telas;
 
 public class Controller_CadastrarCliente {
@@ -91,6 +94,19 @@ public class Controller_CadastrarCliente {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	@FXML
+	public void voltar(ActionEvent event) throws Exception {
+		if (verificar) {
+			verificar = false;
+			Telas.venda();
+		} else {
+			Telas.listarCliente();
+		}
+	}
+
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 	private void verificarCampo(TextField tf) throws ExceptionCampoVazio {
 		if (tf.getText().isEmpty()) {
 			mensagem.setTextFill(Color.web("red"));

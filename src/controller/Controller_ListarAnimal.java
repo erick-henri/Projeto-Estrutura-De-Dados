@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -11,6 +12,12 @@ import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+=======
+import java.util.ResourceBundle;
+
+import Model.VO.AnimalVO;
+import Model.VO.ClienteVO;
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,13 +27,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+<<<<<<< HEAD
 import javafx.scene.control.cell.PropertyValueFactory;
+=======
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 import view.Telas;
 
 public class Controller_ListarAnimal implements Initializable {
 	private static ClienteVO cliente;
+<<<<<<< HEAD
 	private ObservableList<String> cb;
 	
+=======
+
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 	@FXML
 	private TableView<AnimalVO> lista;
 	@FXML
@@ -59,6 +73,7 @@ public class Controller_ListarAnimal implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		nomeCli.setText("Animais de " + cliente.getNome());
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 				AnimalBO aux = new AnimalBO();
 				ObservableList<AnimalVO> animais = FXCollections.observableArrayList(aux.listar());
@@ -71,6 +86,8 @@ public class Controller_ListarAnimal implements Initializable {
 				categorias.add("Nome");
 				cb = FXCollections.observableArrayList(categorias);
 				escolha.setItems(cb);
+=======
+>>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 	}
 
     @FXML
