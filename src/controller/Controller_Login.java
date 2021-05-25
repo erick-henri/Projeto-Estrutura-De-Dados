@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import Exception.ExceptionCampoInvalido;
 import Model.BO.UsuarioBO;
 import Model.VO.UsuarioVO;
@@ -25,8 +26,6 @@ public class Controller_Login {
     @FXML
     private Button login;
 
-    @FXML
-    private Label aviso;
     
     @FXML
     public void logar(ActionEvent event) throws Exception {
@@ -35,7 +34,9 @@ public class Controller_Login {
     			resp.setUsuario(usuario.getText());
     			resp.setSenha(senha.getText());
     		} catch (ExceptionCampoInvalido e2) {
-    			aviso.setVisible(true);
+				mensagem.setText("Login inválido.");
+				mensagem.setTextFill(Color.web("red"));
+    			mensagem.setVisible(true);
     		}
     		
     		UsuarioBO respon = new UsuarioBO();
@@ -43,11 +44,13 @@ public class Controller_Login {
     			try {
     				Telas.telaMenu();
     			} catch (Exception e1) {
-    				aviso.setText("Não foi possivel abrir a tela");
-    				aviso.setVisible(true);
+    				mensagem.setText("Não foi possivel abrir a tela");
+    				mensagem.setVisible(true);
     			}
     		} else {
-    			aviso.setVisible(true);
+    			mensagem.setText("Usuário ou senha inválidos.");
+				mensagem.setTextFill(Color.web("red"));
+    			mensagem.setVisible(true);
     		}
     	}
     }

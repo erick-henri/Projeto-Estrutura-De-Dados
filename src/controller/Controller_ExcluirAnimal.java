@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import view.Telas;
 
 public class Controller_ExcluirAnimal implements Initializable{
 	private static ClienteVO dono;
+	private static AnimalVO deletavel;
 	
     @FXML
     private Label mensagem;
@@ -33,8 +35,9 @@ public class Controller_ExcluirAnimal implements Initializable{
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+    	nome.setText(deletavel.getNome());
+    	cuidados.setText(deletavel.getCuidados());
+    	descricao.setText(deletavel.getDescricao());
 	}
 	
     @FXML
@@ -55,6 +58,14 @@ public class Controller_ExcluirAnimal implements Initializable{
 
 	public static void setDono(ClienteVO dono) {
 		Controller_ExcluirAnimal.dono = dono;
+	}
+
+	public static AnimalVO getDeletavel() {
+		return deletavel;
+	}
+
+	public static void setDeletavel(AnimalVO deletavel) {
+		Controller_ExcluirAnimal.deletavel = deletavel;
 	}
 
 }

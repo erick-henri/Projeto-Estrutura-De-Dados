@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import view.Telas;
 
 public class Controller_EditarAnimal implements Initializable{
 	private static ClienteVO dono;
+	private static AnimalVO editavel;
 	
     @FXML
     private Label mensagem;
@@ -33,8 +35,9 @@ public class Controller_EditarAnimal implements Initializable{
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+    	nome.setText(editavel.getNome());
+    	cuidados.setText(editavel.getCuidados());
+    	descricao.setText(editavel.getDescricao());
 	}
 	
     @FXML
@@ -55,6 +58,14 @@ public class Controller_EditarAnimal implements Initializable{
 
 	public static void setDono(ClienteVO dono) {
 		Controller_EditarAnimal.dono = dono;
+	}
+
+	public static AnimalVO getEditavel() {
+		return editavel;
+	}
+
+	public static void setEditavel(AnimalVO editavel) {
+		Controller_EditarAnimal.editavel = editavel;
 	}
 
 }
