@@ -9,4 +9,5 @@ public interface ClienteInterDAO {
 	public ResultSet findByCpf(String cpf);
 	public ResultSet findById(ClienteVO cliente);
 	public ResultSet findByName(ClienteVO cliente);
+	public ResultSet listar();
 }

@@ -10,6 +10,7 @@ import Model.DAO.PessoaDAO;
 import Model.VO.ClienteVO;
 
 public class ClienteDAO extends PessoaDAO<ClienteVO> implements ClienteInterDAO{
+	
 	public void cadastrar(ClienteVO cliente) {
 		try {
 			super.cadastrar(cliente);
@@ -43,7 +44,6 @@ public class ClienteDAO extends PessoaDAO<ClienteVO> implements ClienteInterDAO{
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, cliente.getId());
-			System.out.println(cliente.getId());
 			ptst.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -56,7 +56,6 @@ public class ClienteDAO extends PessoaDAO<ClienteVO> implements ClienteInterDAO{
 	}
 
 	public void editar(ClienteVO cliente) {
-		//editar um cliente
 		super.editar(cliente);
 	}
 
@@ -114,7 +113,7 @@ public class ClienteDAO extends PessoaDAO<ClienteVO> implements ClienteInterDAO{
 		return rs;
 	}
 	
-	public ResultSet findByCpf(ClienteVO resp) {
+	public ResultSet findByCpf(String cpf) {
 		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, c.idcliente, p.idpessoa "
 				+ "from pessoa as p, cliente as c "
 				+ "where p.idpessoa = c.idpessoa and p.cpf like ?";
@@ -122,7 +121,7 @@ public class ClienteDAO extends PessoaDAO<ClienteVO> implements ClienteInterDAO{
 		ResultSet rs = null;
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, resp + "%");
+			ptst.setString(1, cpf + "%");
 			rs = ptst.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -149,9 +148,4 @@ public class ClienteDAO extends PessoaDAO<ClienteVO> implements ClienteInterDAO{
 		return rs;
 	}
 
-	@Override
-	public ResultSet findByCpf(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import Model.VO.ProdutoVO;
 
-public class ProdutoDAO extends BaseDAO<ProdutoVO> {
+public class ProdutoDAO extends BaseDAO<ProdutoVO> implements ProdutoInterDAO{
 
 	public void cadastrar(ProdutoVO vo) {
 		// Aqui irá cadastrar os produtos utilizando um banco de dados
@@ -193,6 +193,4 @@ public class ProdutoDAO extends BaseDAO<ProdutoVO> {
 		return rs;
 	}
 	
-	
-
 }

@@ -50,6 +50,7 @@ public class Controller_ExcluirFuncionario implements Initializable{
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
     	setConfirmar(false);
     	nome.setText(excluindo.getNome());
 		cpf.setText(excluindo.getCpf());
@@ -70,10 +71,10 @@ public class Controller_ExcluirFuncionario implements Initializable{
     	if(confirmar) {
 			UsuarioBO deletando = new UsuarioBO();
 			deletando.excluir(excluindo);
-			Telas.listarProduto();
+			Telas.listarFuncionario();
 		} else {
 			mensagem.setTextFill(Color.web("red"));
-			mensagem.setText("Deseja mesmo deletar o funcionário ?\n(Essa ação não poderá ser desfeita)");
+			mensagem.setText("Deseja mesmo deletar o funcionário? \n(Essa ação não poderá ser desfeita)");
 			mensagem.setVisible(true);
 			voltar.setText("Não");
 			excluir.setText("Sim");
@@ -95,8 +96,7 @@ public class Controller_ExcluirFuncionario implements Initializable{
 
 	public void setConfirmar(boolean confirmar) {
 		this.confirmar = confirmar;
-	}
-	
-    
+	}	
+  
     
 }

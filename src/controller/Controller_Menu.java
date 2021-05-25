@@ -22,8 +22,8 @@ public class Controller_Menu {
     private Button clientes;
 
     @FXML
-    public void vendas(ActionEvent event) {
-
+    public void vendas(ActionEvent event) throws Exception {
+    	Telas.venda();
     }
 
     @FXML

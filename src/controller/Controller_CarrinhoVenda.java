@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import Exception.ExceptionCampoInvalido;
 import Model.BO.ProdutoBO;
+import Model.VO.ClienteVO;
 import Model.VO.ProdutoVO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,9 +22,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
+import myList.ListaEncadeadaDupla;
+import myList.MyInterfaceList;
 import view.Telas;
 
-public class Controller_ListarProduto implements Initializable {
+public class Controller_CarrinhoVenda implements Initializable {
+	private static ClienteVO cliente;
+	private static MyInterfaceList<ProdutoVO> carrinhoVenda = new ListaEncadeadaDupla<ProdutoVO>();
 	private ObservableList<String> cb;
 
 	@FXML
@@ -42,9 +47,9 @@ public class Controller_ListarProduto implements Initializable {
 	@FXML
 	private Button adicionar;
 	@FXML
-	private Button excluir;
+	private Button concluir;
 	@FXML
-	private Button editar;
+	private Button carrinho;
 	@FXML
 	private Button voltar;
 	@FXML
@@ -52,6 +57,8 @@ public class Controller_ListarProduto implements Initializable {
 
 	@FXML
 	private TextField pesquisa;
+	@FXML
+	private TextField quantidadeAdicionada;
 
 	@FXML
 	private Label mensagem;
@@ -77,34 +84,54 @@ public class Controller_ListarProduto implements Initializable {
 	}
 
 	@FXML
-	public void adicionar(ActionEvent event) throws Exception {
-		Telas.adicionarProduto();
+	public void adicionarAoCarrinho(ActionEvent event) {
+		//esse metodo irá adicionar um produto selecionado da lista no carrinho
+		//com uma quantidade não maior do que a que tem em estoque
+		ProdutoVO adicionar = lista.getSelectionModel().getSelectedItem();
+		if (adicionar != null) {
+			if (quantidadeAdicionada.getText() != null && !quantidadeAdicionada.getText().isEmpty()) {
+				try {
+				adicionar.setQuantiPedido(Integer.parseInt(quantidadeAdicionada.getText()));
+				if (carrinhoVenda.contains(adicionar)) {
+					int id = carrinhoVenda.indexOf(adicionar);
+					carrinhoVenda.set(id, adicionar);
+				} else {
+					carrinhoVenda.add(adicionar);
+				}
+				mensagem.setTextFill(Color.web("green"));
+				mensagem.setText("Produto adicionado ao carrinho");
+				mensagem.setVisible(true);
+				} catch (NumberFormatException e1) {
+					mensagem.setTextFill(Color.web("red"));
+					mensagem.setText("Digitar apenas números em quantidade.");
+					mensagem.setVisible(true);
+				} catch (ExceptionCampoInvalido e1) {
+					mensagem.setTextFill(Color.web("red"));
+					mensagem.setText(e1.getMessage());
+					mensagem.setVisible(true);
+				}
+			} else {
+				mensagem.setTextFill(Color.web("red"));
+				mensagem.setText("Digite a quantidade que deseja por no carrinho");
+				mensagem.setVisible(true);
+			}
+		} else {
+			mensagem.setTextFill(Color.web("red"));
+			mensagem.setText("Selecione um produto para adicionar ao carrinho");
+			mensagem.setVisible(true);
+		}
 	}
 
 	@FXML
-	public void editar(ActionEvent event) throws Exception {
-		ProdutoVO editando = lista.getSelectionModel().getSelectedItem();
-		if (editando != null) {
-			ProdutoBO aux = new ProdutoBO();
-			Controller_EditarProduto.setEditando(aux.findById(editando));
-			Telas.editarProduto();
-		}
-		mensagem.setTextFill(Color.web("red"));
-		mensagem.setText("Selecione um item para editar");
-		mensagem.setVisible(true);
+	public void verCarrinho(ActionEvent event) throws Exception {
+		Controller_Carrinho.setCliente(cliente);
+		Controller_Carrinho.setCarrinhoVenda(carrinhoVenda);
+		Telas.carrinho();
 	}
-
+	
 	@FXML
-	public void excluir(ActionEvent event) throws Exception {
-		ProdutoVO editando = lista.getSelectionModel().getSelectedItem();
-		if (editando != null) {
-			ProdutoBO aux = new ProdutoBO();
-			Controller_ExcluirProduto.setExcluindo(aux.findById(editando));
-			Telas.excluirProduto();
-		}
-		mensagem.setTextFill(Color.web("red"));
-		mensagem.setText("Selecione um item para excluir");
-		mensagem.setVisible(true);
+	public void concluir(ActionEvent event) throws Exception {
+		
 	}
 
 	@FXML
@@ -120,7 +147,8 @@ public class Controller_ListarProduto implements Initializable {
 					mensagem.setTextFill(Color.web("green"));
 					mensagem.setText("Pesquisa executada");
 					prod.setNome(pesquisa.getText());
-					ObservableList<ProdutoVO> produtos = FXCollections.observableArrayList(pesquisando.findByName(prod));
+					ObservableList<ProdutoVO> produtos = FXCollections
+							.observableArrayList(pesquisando.findByName(prod));
 					nome.setCellValueFactory(new PropertyValueFactory<ProdutoVO, String>("nome"));
 					quantidade.setCellValueFactory(new PropertyValueFactory<ProdutoVO, Integer>("quantidade"));
 					preco.setCellValueFactory(new PropertyValueFactory<ProdutoVO, Double>("preco"));
@@ -134,7 +162,8 @@ public class Controller_ListarProduto implements Initializable {
 					mensagem.setTextFill(Color.web("green"));
 					mensagem.setText("Pesquisa executada");
 					prod.setNome(pesquisa.getText());
-					ObservableList<ProdutoVO> produtos = FXCollections.observableArrayList(pesquisando.findByCode(prod));
+					ObservableList<ProdutoVO> produtos = FXCollections
+							.observableArrayList(pesquisando.findByCode(prod));
 					nome.setCellValueFactory(new PropertyValueFactory<ProdutoVO, String>("nome"));
 					quantidade.setCellValueFactory(new PropertyValueFactory<ProdutoVO, Integer>("quantidade"));
 					preco.setCellValueFactory(new PropertyValueFactory<ProdutoVO, Double>("preco"));
@@ -155,9 +184,26 @@ public class Controller_ListarProduto implements Initializable {
 	}
 
 	@FXML
-
 	public void voltar(ActionEvent event) throws Exception {
-		Telas.telaMenu();
+		Telas.venda();
+	}
+
+	
+	public static MyInterfaceList<ProdutoVO> getCarrinhoVenda() {
+		return carrinhoVenda;
+	}
+
+	
+	public static void setCarrinhoVenda(MyInterfaceList<ProdutoVO> carrinhoVenda) {
+		Controller_CarrinhoVenda.carrinhoVenda = carrinhoVenda;
+	}
+
+	public static ClienteVO getCliente() {
+		return cliente;
+	}
+
+	public static void setCliente(ClienteVO cliente) {
+		Controller_CarrinhoVenda.cliente = cliente;
 	}
 
 }

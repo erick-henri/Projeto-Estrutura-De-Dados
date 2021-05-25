@@ -1,11 +1,8 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -17,40 +14,27 @@ import Exception.ExceptionCampoInvalido;
 import Model.BO.ProdutoBO;
 import Model.VO.ProdutoVO;
 
-public class Controller_AdicionarProduto implements Initializable{
+public class Controller_AdicionarProduto{
 	@FXML
 	private TextField preco;
-	
 	@FXML
 	private TextField codigo;
-
 	@FXML
 	private TextField peso;
-
-	@FXML
-	private Button salvar;
-
-	@FXML
-	private Button voltar;
-
 	@FXML
 	private TextField nome;
-
 	@FXML
 	private TextField quantidade;
-
 	@FXML
 	private TextArea descricao;
 	
 	@FXML
+	private Button salvar;
+	@FXML
+	private Button voltar;
+	
+	@FXML
 	private Label mensagem;
-	
-	
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-	}
 	
 	public void salvar(ActionEvent e) throws Exception{
 		try {

@@ -7,27 +7,28 @@ import java.sql.Statement;
 
 import Model.VO.UsuarioVO;
 public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
-	public boolean logar(UsuarioVO responsavel) {
+	
+	public boolean logar(UsuarioVO usuario) {
 		// Logar
-		if (buscarLogin(responsavel)) {
-			String sql = "select * from responsavel where usuario = ?";
+		if (buscarLogin(usuario)) {
+			String sql = "select * from usuario where usuario = ?";
 			PreparedStatement ptst;
 			ResultSet rs = null;
 			String aux = "";
 			try {
 				ptst = getConnection().prepareStatement(sql);
-				ptst.setString(1, responsavel.getUsuario());
+				ptst.setString(1, usuario.getUsuario());
 				rs = ptst.executeQuery();
 				if (rs.next()) {
 					aux = rs.getString("senha");
-					responsavel.setId(rs.getLong("idResponsavel"));
+					usuario.setId(rs.getLong("idusuario"));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			super.closeConnection();
-			if ((!responsavel.getSenha().isEmpty()) && (responsavel.getSenha().equals(aux))) {
+			if ((!usuario.getSenha().isEmpty()) && (usuario.getSenha().equals(aux))) {
 				return true;
 			} else {
 				return false;
@@ -38,15 +39,16 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		}
 	}
 
-	public boolean buscarLogin(UsuarioVO responsavel) {
+	
+	public boolean buscarLogin(UsuarioVO usuario) {
 		// Verifica se o login existe no banco de dados
-		String sql = "select * from responsavel where usuario = ?;";
+		String sql = "select * from usuario where usuario = ?;";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		boolean aux = false;
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, responsavel.getUsuario());
+			ptst.setString(1, usuario.getUsuario());
 			rs = ptst.executeQuery();
 			if (rs.next()) {
 				aux = true;
@@ -59,22 +61,22 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		return aux;
 	}
 	
-	public void cadastrar(UsuarioVO responsavel) {
+	public void cadastrar(UsuarioVO usuario) {
 		try {
-			super.cadastrar(responsavel);
-			String sql = "insert into Responsavel" + "(usuario, senha, idpessoa) " + "values (?, ?, ?);";
+			super.cadastrar(usuario);
+			String sql = "insert into Usuario" + "(usuario, senha, idpessoa) " + "values (?, ?, ?);";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ptst.setString(1, responsavel.getUsuario());
-			ptst.setString(2, responsavel.getSenha());
-			ptst.setLong(3, responsavel.getIdPessoa());
+			ptst.setString(1, usuario.getUsuario());
+			ptst.setString(2, usuario.getSenha());
+			ptst.setLong(3, usuario.getIdPessoa());
 			int linhas = ptst.executeUpdate();
 			if (linhas == 0) {
 				throw new SQLException("Nenhuma linha foi alterada.");
 			}
 			ResultSet rs = ptst.getGeneratedKeys();
 			if (rs.next()) {
-				responsavel.setId(rs.getLong(3));
+				usuario.setId(rs.getLong(1));
 			} else {
 				throw new SQLException("Incersão falha.");
 			}
@@ -86,15 +88,15 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		super.closeConnection();
 	}
 
-	public void editar(UsuarioVO responsavel) {
+	public void editar(UsuarioVO usuario) {
 		try {
-			super.editar(responsavel);
-			String sql = "update Responsavel set " + "usuario = ?, senha = ? " + "where idresponsavel = ?";
+			super.editar(usuario);
+			String sql = "update usuario set " + "usuario = ?, senha = ? " + "where idusuario = ?";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, responsavel.getUsuario());
-			ptst.setString(2, responsavel.getSenha());
-			ptst.setLong(3, responsavel.getId());
+			ptst.setString(1, usuario.getUsuario());
+			ptst.setString(2, usuario.getSenha());
+			ptst.setLong(3, usuario.getId());
 			int linhas = ptst.executeUpdate();
 			if (linhas == 0) {
 				throw new SQLException("Atualização falho.");
@@ -106,31 +108,31 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		super.closeConnection();
 	}
 
-	public void excluir(UsuarioVO responsavel) {
-		// Excluir um responsavel pelo id
-		String sql = "delete from responsavel where idresponsavel = ?";
+	public void excluir(UsuarioVO usuario) {
+		// Excluir um usuario pelo id
+		String sql = "delete from usuario where idusuario = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, responsavel.getId());
+			ptst.setLong(1, usuario.getId());
 			ptst.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		super.excluir(responsavel); // deletar da tabela pessoa também
+		super.excluir(usuario); // deletar da tabela pessoa também
 		super.closeConnection();
 	}
 
-	public ResultSet findById(UsuarioVO responsavel) {
-		// Encontrar um responsavel pelo ID
-		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idresponsavel, r.usuario, r.senha "
-				+ "from pessoa as p, responsavel as r " + "where p.idpessoa = r.idpessoa and r.idresponsavel = ?";
+	public ResultSet findById(UsuarioVO usuario) {
+		// Encontrar um usuario pelo ID
+		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idusuario, r.usuario, r.senha "
+				+ "from pessoa as p, usuario as r where p.idpessoa = r.idpessoa and r.idusuario = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, responsavel.getId());
+			ptst.setLong(1, usuario.getId());
 			rs = ptst.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -140,15 +142,15 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		return rs;
 	}
 
-	public ResultSet findByIdPessoa(UsuarioVO responsavel) {
-		// Encontrar um responsavel pelo IdPessoa
-		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idresponsavel, r.usuario, r.senha "
-				+ "from pessoa as p, responsavel as r " + "where p.idpessoa = r.idpessoa and p.idpessoa = ?";
+	public ResultSet findByIdPessoa(UsuarioVO usuario) {
+		// Encontrar um usuario pelo IdPessoa
+		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idusuario, r.usuario, r.senha "
+				+ "from pessoa as p, usuario as r " + "where p.idpessoa = r.idpessoa and p.idpessoa = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, responsavel.getIdPessoa());
+			ptst.setLong(1, usuario.getIdPessoa());
 			rs = ptst.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -157,12 +159,11 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		super.closeConnection();
 		return rs;
 	}
-
 	
 	public ResultSet listar() {
 		// listar todos os responsaveis cadastrados
-		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idresponsavel, r.usuario, r.senha "
-				+ "from pessoa as p, responsavel as r " + "where p.idpessoa = r.idpessoa";
+		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idusuario, r.usuario, r.senha "
+				+ "from pessoa as p, usuario as r " + "where p.idpessoa = r.idpessoa";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		try {
@@ -176,14 +177,14 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		return rs;
 	}
 
-	public ResultSet findByName(UsuarioVO responsavel) {
-		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idresponsavel, r.usuario, r.senha "
-				+ "from pessoa as p, responsavel as r " + "where p.idpessoa = r.idpessoa and p.nome ilike ?";
+	public ResultSet findByName(UsuarioVO usuario) {
+		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idusuario, r.usuario, r.senha "
+				+ "from pessoa as p, usuario as r " + "where p.idpessoa = r.idpessoa and p.nome ilike ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, "%" + responsavel.getNome() + "%");
+			ptst.setString(1, "%" + usuario.getNome() + "%");
 			rs = ptst.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -193,10 +194,10 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		return rs;
 	}
 
-	public ResultSet findByCpf(UsuarioVO cpf) {
+	public ResultSet findByCpf(String cpf) {
 		// Buscar por cpf
-		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idresponsavel, r.usuario, r.senha "
-				+ "from pessoa as p, responsavel as r " + "where p.idpessoa = r.idpessoa and p.cpf like ?";
+		String sql = "select p.nome, p.cpf, p.telefone, p.endereco, p.idpessoa, r.idusuario, r.usuario, r.senha "
+				+ "from pessoa as p, usuario as r " + "where p.idpessoa = r.idpessoa and p.cpf like ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		try {
@@ -210,4 +211,6 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		super.closeConnection();
 		return rs;
 	}
+	
+	
 }
