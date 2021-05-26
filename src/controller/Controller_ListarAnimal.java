@@ -1,7 +1,6 @@
 package controller;
 
 import java.net.URL;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -12,12 +11,10 @@ import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-=======
 import java.util.ResourceBundle;
 
 import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
->>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,27 +24,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-<<<<<<< HEAD
 import javafx.scene.control.cell.PropertyValueFactory;
-=======
->>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
+import javafx.scene.paint.Color;
 import view.Telas;
 
 public class Controller_ListarAnimal implements Initializable {
 	private static ClienteVO cliente;
-<<<<<<< HEAD
 	private ObservableList<String> cb;
-	
-=======
 
->>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 	@FXML
 	private TableView<AnimalVO> lista;
 	@FXML
 	private TableColumn<AnimalVO, String> nome;
 	@FXML
 	private TableColumn<AnimalVO, Long> id;
-	
+
 	@FXML
 	private ComboBox<String> escolha;
 	@FXML
@@ -56,7 +47,7 @@ public class Controller_ListarAnimal implements Initializable {
 	private Label mensagem;
 	@FXML
 	private TextField pesquisa;
-	
+
 	@FXML
 	private Button cadastrar;
 	@FXML
@@ -73,57 +64,81 @@ public class Controller_ListarAnimal implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		nomeCli.setText("Animais de " + cliente.getNome());
-<<<<<<< HEAD
+
 		// TODO Auto-generated method stub
-				AnimalBO aux = new AnimalBO();
-				ObservableList<AnimalVO> animais = FXCollections.observableArrayList(aux.listar());
-				nome.setCellValueFactory(new PropertyValueFactory<AnimalVO, String>("nome"));
-				id.setCellValueFactory(new PropertyValueFactory<AnimalVO, Long>("id"));
-				lista.setItems(animais);
-				
-				List<String> categorias = new ArrayList<String>();
-				categorias.add("Id");
-				categorias.add("Nome");
-				cb = FXCollections.observableArrayList(categorias);
-				escolha.setItems(cb);
-=======
->>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
+		AnimalBO aux = new AnimalBO();
+		AnimalVO aux1 = new AnimalVO();
+		aux1.setCliente(cliente);
+		ObservableList<AnimalVO> animais = FXCollections.observableArrayList(aux.listar(aux1));
+		nome.setCellValueFactory(new PropertyValueFactory<AnimalVO, String>("nome"));
+		id.setCellValueFactory(new PropertyValueFactory<AnimalVO, Long>("id"));
+		lista.setItems(animais);
+
+		List<String> categorias = new ArrayList<String>();
+		categorias.add("ID");
+		categorias.add("Nome");
+		cb = FXCollections.observableArrayList(categorias);
+		escolha.setItems(cb);
 	}
 
-    @FXML
-    public void cadastrar(ActionEvent event) throws Exception {
-    	Controller_CadastrarAnimal.setDono(cliente);
-    	Telas.adicionarAnimal();
-    }
+	@FXML
+	public void cadastrar(ActionEvent event) throws Exception {
+		Controller_CadastrarAnimal.setDono(cliente);
+		Telas.adicionarAnimal();
+	}
 
-    @FXML
-    public void editar(ActionEvent event) throws Exception {
-    	Controller_EditarAnimal.setDono(cliente);
-    	Telas.editarAnimal();
-    }
+	@FXML
+	public void editar(ActionEvent event) throws Exception {
+		AnimalVO editavel = lista.getSelectionModel().getSelectedItem();
+		if (editavel != null) {
+			AnimalBO aux = new AnimalBO();
+			Controller_EditarAnimal.setDono(cliente);
+			Controller_EditarAnimal.setEditavel(aux.findById(editavel));
+			Telas.editarAnimal();
+		}
+		mensagem.setText("Selecione um animal para editar");
+		mensagem.setTextFill(Color.web("red"));
+		mensagem.setVisible(true);
+	}
 
-    @FXML
-    public void excluir(ActionEvent event) throws Exception {
-    	Controller_ExcluirAnimal.setDono(cliente);
-    	Telas.excluirAnimal();
-    }
-    
-    @FXML
-    public void pesquisar(ActionEvent event) {
+	@FXML
+	public void excluir(ActionEvent event) throws Exception {
+		AnimalVO deletavel = lista.getSelectionModel().getSelectedItem();
+		if (deletavel != null) {
+			AnimalBO aux = new AnimalBO();
+			Controller_ExcluirAnimal.setDono(cliente);
+			Controller_ExcluirAnimal.setDeletavel(aux.findById(deletavel));
+			Telas.excluirAnimal();
+		}
+		mensagem.setText("Selecione um animal para excluir");
+		mensagem.setTextFill(Color.web("red"));
+		mensagem.setVisible(true);
+	}
 
-    }
-
-    @FXML
-    public void tratamento(ActionEvent event) throws Exception {
-    	Controller_Tratamento.setDono(cliente);
-    	Telas.telaTratamento();
-    }
+	@FXML
+	public void tratamento(ActionEvent event) throws Exception {
+		AnimalVO tratavel = lista.getSelectionModel().getSelectedItem();
+		if (tratavel != null) {
+			AnimalBO aux = new AnimalBO();
+			Controller_Tratamento.setDono(cliente);
+			Controller_Tratamento.setAnimal(aux.findById(tratavel));
+			Telas.telaTratamento();
+		}
+		mensagem.setText("Selecione um animal para tratar");
+		mensagem.setTextFill(Color.web("red"));
+		mensagem.setVisible(true);
+	}
 	
-    @FXML
-    public void voltar(ActionEvent event) throws Exception {
-    	Telas.listarCliente();
-    }
-    
+	@FXML
+	public void pesquisar(ActionEvent event) {
+
+	}
+
+	@FXML
+	public void voltar(ActionEvent event) throws Exception {
+		Telas.listarCliente();
+	}
+
 	public static ClienteVO getCliente() {
 		return cliente;
 	}

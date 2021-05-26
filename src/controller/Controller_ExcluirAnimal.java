@@ -3,7 +3,11 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Model.BO.AnimalBO;
+import Model.BO.ProdutoBO;
+import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
+import Model.VO.ProdutoVO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,11 +15,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import view.Telas;
 
 public class Controller_ExcluirAnimal implements Initializable{
 	private static ClienteVO dono;
-	
+	private static AnimalVO deletavel;
+	private boolean confirmar;
     @FXML
     private Label mensagem;
 
@@ -33,14 +39,26 @@ public class Controller_ExcluirAnimal implements Initializable{
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+    	nome.setText(deletavel.getNome());
+    	cuidados.setText(deletavel.getCuidados());
+    	descricao.setText(deletavel.getDescricao());
 	}
 	
     @FXML
     public void excluir(ActionEvent event) throws Exception {
     	Controller_ListarAnimal.setCliente(dono);
-    	Telas.listarAnimal();
+    	if(confirmar) {
+			AnimalBO deletando = new AnimalBO();
+			deletando.excluir(deletavel);
+			Telas.listarAnimal();
+		} else {
+			mensagem.setTextFill(Color.web("red"));
+			mensagem.setText("Deseja mesmo deletar ?\n(Essa ação não poderá ser desfeita)");
+			mensagem.setVisible(true);
+			voltar.setText("Não");
+			excluir.setText("Sim");
+			setConfirmar(true);
+		}
     }
 
     @FXML
@@ -57,4 +75,19 @@ public class Controller_ExcluirAnimal implements Initializable{
 		Controller_ExcluirAnimal.dono = dono;
 	}
 
+	public static AnimalVO getDeletavel() {
+		return deletavel;
+	}
+
+	public static void setDeletavel(AnimalVO deletavel) {
+		Controller_ExcluirAnimal.deletavel = deletavel;
+	}
+
+	public boolean isConfirmar() {
+		return confirmar;
+	}
+
+	public void setConfirmar(boolean confirmar) {
+		this.confirmar = confirmar;
+	}
 }

@@ -39,10 +39,6 @@ public class UsuarioDAO extends PessoaDAO<UsuarioVO>{
 		}
 	}
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> 6280a7a6360fa37a62f32520cb4d0a1fc49356d0
 	public boolean buscarLogin(UsuarioVO usuario) {
 		// Verifica se o login existe no banco de dados
 		String sql = "select * from usuario where usuario = ?;";
