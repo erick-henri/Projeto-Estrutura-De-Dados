@@ -77,13 +77,22 @@ public class AnimalDAO extends BaseDAO<AnimalVO> implements AnimalInterDAO{
 	
 	@Override
 	public ResultSet findById(AnimalVO animal) {
+<<<<<<< HEAD
 		// Encontrar um Animal pelo ID
 				String sql = "select * from animal where idanimal = ?";
+=======
+		// Encontrar um usuario pelo ID
+				String sql = "select * from animal where idanimal = ? and idcliente = ?";
+>>>>>>> 1059b7e833bdcf8c01b15aca9ab02b4fcb5787d2
 				PreparedStatement ptst;
 				ResultSet rs = null;
 				try {
 					ptst = getConnection().prepareStatement(sql);
 					ptst.setLong(1, animal.getId());
+<<<<<<< HEAD
+=======
+					ptst.setLong(2, animal.getCliente().getId());
+>>>>>>> 1059b7e833bdcf8c01b15aca9ab02b4fcb5787d2
 					rs = ptst.executeQuery();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block

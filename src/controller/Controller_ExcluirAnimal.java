@@ -3,8 +3,11 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+<<<<<<< HEAD
 import Model.BO.AnimalBO;
 import Model.BO.ProdutoBO;
+=======
+>>>>>>> 1059b7e833bdcf8c01b15aca9ab02b4fcb5787d2
 import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
 import Model.VO.ProdutoVO;
@@ -21,7 +24,11 @@ import view.Telas;
 public class Controller_ExcluirAnimal implements Initializable{
 	private static ClienteVO dono;
 	private static AnimalVO deletavel;
+<<<<<<< HEAD
 	private boolean confirmar;
+=======
+	
+>>>>>>> 1059b7e833bdcf8c01b15aca9ab02b4fcb5787d2
     @FXML
     private Label mensagem;
 
@@ -83,6 +90,7 @@ public class Controller_ExcluirAnimal implements Initializable{
 		Controller_ExcluirAnimal.deletavel = deletavel;
 	}
 
+<<<<<<< HEAD
 	public boolean isConfirmar() {
 		return confirmar;
 	}
@@ -90,4 +98,6 @@ public class Controller_ExcluirAnimal implements Initializable{
 	public void setConfirmar(boolean confirmar) {
 		this.confirmar = confirmar;
 	}
+=======
+>>>>>>> 1059b7e833bdcf8c01b15aca9ab02b4fcb5787d2
 }
