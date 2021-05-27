@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_AdicionarProduto">
+   <children>
+      <ImageView fitHeight="128.0" fitWidth="600.0" layoutX="3.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/barra.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="197.0" layoutY="25.0" text="Cadastrar Produto">
+         <font>
+            <Font name="Verdana Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="70.0" layoutY="90.0" text="Nome">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="131.0" text="Descrição">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="192.0" prefHeight="16.0" prefWidth="38.0" text="Peso">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="233.0" text="Quantidade">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="192.0" text="Preço">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="233.0" text="Código de Barras">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nome" layoutX="69.0" layoutY="106.0" prefHeight="25.0" prefWidth="461.0">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TextArea fx:id="descricao" layoutX="69.0" layoutY="147.0" prefHeight="45.0" prefWidth="461.0">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextArea>
+      <TextField fx:id="peso" layoutX="69.0" layoutY="208.0" prefHeight="25.0" prefWidth="223.0">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="preco" layoutX="300.0" layoutY="208.0" prefHeight="25.0" prefWidth="233.0">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="codigo" layoutX="299.0" layoutY="249.0" prefHeight="25.0" prefWidth="233.0">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="quantidade" layoutX="68.0" layoutY="249.0" prefHeight="25.0" prefWidth="223.0">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Button fx:id="salvar" alignment="CENTER" layoutX="490.0" layoutY="333.0" mnemonicParsing="false" onAction="#salvar" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #34FF48; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Salvar">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="voltar" alignment="CENTER" layoutX="46.0" layoutY="333.0" mnemonicParsing="false" onAction="#voltar" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #A8FF39; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Voltar">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="mensagem" alignment="CENTER" layoutX="3.0" layoutY="73.0" prefHeight="17.0" prefWidth="595.0" text="Label" visible="false">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
