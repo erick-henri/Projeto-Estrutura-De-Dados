@@ -45,4 +45,11 @@ public class Controller_Menu {
     public void funcionarios(ActionEvent event) throws Exception {
     	Telas.listarFuncionario();
     }
+    
+    @FXML
+    public void relatorios(ActionEvent event) throws Exception {
+    	Telas.relatorioVenda();
+    }
+    
+    
 }

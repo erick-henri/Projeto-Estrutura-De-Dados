@@ -42,6 +42,7 @@ public class Controller_Login {
     		UsuarioBO respon = new UsuarioBO();
     		if ((respon != null )&& (respon.login(resp))) {
     			try {
+    				Telas.setLogado(resp);
     				Telas.telaMenu();
     			} catch (Exception e1) {
     				mensagem.setText("Não foi possivel abrir a tela");
