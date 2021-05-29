@@ -56,10 +56,9 @@ public class AnimalBO extends BaseBO<AnimalVO> implements AnimalInterBO {
 		// Listar os animais do determinado cliente
 		ResultSet rs = animal.listar(vo);
 		MyInterfaceList<AnimalVO> animais = new ListaEncadeadaDupla<AnimalVO>();
-		AnimalVO aux = new AnimalVO();
 		try {
 			while (rs.next()) {
-
+				AnimalVO aux = new AnimalVO();
 				aux.setId(rs.getLong("idanimal"));
 				aux.setNome(rs.getString("nome"));
 				aux.setCuidados(rs.getString("cuidados"));

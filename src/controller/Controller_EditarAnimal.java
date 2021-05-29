@@ -2,17 +2,11 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-<<<<<<< HEAD
 import Exception.ExceptionCampoInvalido;
 import Exception.ExceptionCampoVazio;
 import Model.BO.AnimalBO;
-import Model.BO.ProdutoBO;
-=======
->>>>>>> 1059b7e833bdcf8c01b15aca9ab02b4fcb5787d2
 import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
-import Model.VO.ProdutoVO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,7 +20,6 @@ import view.Telas;
 public class Controller_EditarAnimal implements Initializable {
 	private static ClienteVO dono;
 	private static AnimalVO editavel;
-<<<<<<< HEAD
 
 	@FXML
 	private Label mensagem;
@@ -84,42 +77,6 @@ public class Controller_EditarAnimal implements Initializable {
 		Controller_ListarAnimal.setCliente(dono);
 		Telas.listarAnimal();
 	}
-=======
-	
-    @FXML
-    private Label mensagem;
-
-    @FXML
-    private Button voltar;
-    @FXML
-    private Button editar;
-    
-    @FXML
-    private TextField nome;
-    @FXML
-    private TextArea cuidados;
-    @FXML
-    private TextArea descricao;
-    
-    @Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-    	nome.setText(editavel.getNome());
-    	cuidados.setText(editavel.getCuidados());
-    	descricao.setText(editavel.getDescricao());
-	}
-	
-    @FXML
-    public void editar(ActionEvent event) throws Exception {
-    	Controller_ListarAnimal.setCliente(dono);
-    	Telas.listarAnimal();
-    }
-
-    @FXML
-    public void voltar(ActionEvent event) throws Exception {
-    	Controller_ListarAnimal.setCliente(dono);
-    	Telas.listarAnimal();
-    }
->>>>>>> 1059b7e833bdcf8c01b15aca9ab02b4fcb5787d2
 
 	public static ClienteVO getDono() {
 		return dono;
@@ -136,8 +93,7 @@ public class Controller_EditarAnimal implements Initializable {
 	public static void setEditavel(AnimalVO editavel) {
 		Controller_EditarAnimal.editavel = editavel;
 	}
-
-<<<<<<< HEAD
+	
 	private void verificarCampo(TextField tf) throws ExceptionCampoVazio {
 		// metodo usado para verificar os campos que estão vazios
 		if (tf.getText().isEmpty()) {
@@ -159,6 +115,4 @@ public class Controller_EditarAnimal implements Initializable {
 		} else
 			return;
 	}
-=======
->>>>>>> 1059b7e833bdcf8c01b15aca9ab02b4fcb5787d2
 }

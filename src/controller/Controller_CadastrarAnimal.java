@@ -4,7 +4,6 @@ import Exception.ExceptionCampoInvalido;
 import Exception.ExceptionCampoVazio;
 import Exception.ExceptionLoginExistente;
 import Model.BO.AnimalBO;
-import Model.BO.ClienteBO;
 import Model.VO.AnimalVO;
 import Model.VO.ClienteVO;
 import javafx.event.ActionEvent;
