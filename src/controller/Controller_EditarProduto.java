@@ -19,6 +19,7 @@ import view.Telas;
 
 public class Controller_EditarProduto implements Initializable{
 	private static ProdutoVO editando;
+	private String codigoInicial;
 	
 	@FXML
 	private TextField preco;
@@ -47,6 +48,7 @@ public class Controller_EditarProduto implements Initializable{
 		peso.setText(editando.getPeso()+"");
 		quantidade.setText(editando.getQuantidade()+"");
 		descricao.setText(editando.getDescricao());
+		codigoInicial = editando.getCodigo();
 	}
 	
 	public void editar(ActionEvent e) throws Exception{
@@ -60,7 +62,9 @@ public class Controller_EditarProduto implements Initializable{
 			ProdutoVO prod = new ProdutoVO();
 			ProdutoBO editar = new ProdutoBO();
 			prod.setNome(nome.getText());
-			prod.setCodigoAux(codigo.getText());
+			if (!codigoInicial.equals(codigo.getText())) {
+				prod.setCodigoAux(codigo.getText());
+			}
 			prod.setCodigo(codigo.getText());
 			prod.setPreco(Double.parseDouble(preco.getText()));
 			prod.setPeso(Double.parseDouble(peso.getText()));
@@ -120,6 +124,14 @@ public class Controller_EditarProduto implements Initializable{
 
 	public static void setEditando(ProdutoVO editando) {
 		Controller_EditarProduto.editando = editando;
+	}
+
+	public String getCodigoInicial() {
+		return codigoInicial;
+	}
+
+	public void setCodigoInicial(String codigoInicial) {
+		this.codigoInicial = codigoInicial;
 	}
 	
 	

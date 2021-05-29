@@ -58,9 +58,6 @@ public class ProdutoVO {
 	}
 
 	public void setQuantidade(int quantidade) {
-		// esse método é usado em estoqueVO para aumentar
-		// ou diminuir a quantidade, e lá mesmo
-		// verifica se a quantidade é valida ou não
 		this.quantidade += quantidade;
 	}
 
