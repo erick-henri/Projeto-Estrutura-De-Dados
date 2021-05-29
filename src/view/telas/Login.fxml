@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_Login">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_Login">
    <children>
       <ImageView fitHeight="128.0" fitWidth="600.0" layoutX="3.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,6 +35,11 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
+      <PasswordField fx:id="senha" layoutX="164.0" layoutY="237.0" prefHeight="25.0" prefWidth="272.0" promptText="Senha">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </PasswordField>
       <Button fx:id="logar" alignment="CENTER" layoutX="215.0" layoutY="310.0" mnemonicParsing="false" onAction="#logar" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: #34FF48; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Entrar">
          <font>
             <Font name="Verdana Bold" size="13.0" />
@@ -48,11 +53,6 @@
             <Font name="Verdana" size="13.0" />
          </font>
       </Label>
-      <PasswordField fx:id="senha" layoutX="164.0" layoutY="237.0" prefHeight="25.0" prefWidth="272.0" promptText="Senha">
-         <font>
-            <Font name="Verdana" size="13.0" />
-         </font>
-      </PasswordField>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagens/logo.png" />
