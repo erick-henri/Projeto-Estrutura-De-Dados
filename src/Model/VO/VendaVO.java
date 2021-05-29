@@ -6,49 +6,13 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class VendaVO {
-	private ClienteVO cliente;
-	private UsuarioVO funcionario;
-	private ArrayList <ProdutoVO> carrinho = new ArrayList<ProdutoVO>();
 	private Calendar data;
 	private double valor;
 	private String codigo;
 	private long id;
-	private TratamentoVO tratamento;
+	private String cpfCli;
+	private String cpfFunc;
 	
-	public ClienteVO getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(ClienteVO cliente) {
-		if (cliente != null) {
-			this.cliente = cliente; // Atribui os valores ao metodo da classe cliente.
-		} else {
-			System.out.println("Operação inválida");
-		}
-	}
-	
-	public UsuarioVO getFuncionario() {
-		return funcionario;
-	}
-
-	public void setFuncionario(UsuarioVO responsavel) {
-		if (responsavel != null) {
-			this.funcionario = responsavel;
-		} else {
-			System.out.println("OperaÃ§Ã£o inválida");
-		}
-	}
-	
-	public ArrayList <ProdutoVO> getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(ProdutoVO produto) {
-		if (produto != null) {
-			this.carrinho.add(produto);//adicionando produto no carrinho
-		}
-	}
-
 	public Calendar getData() {
 		return data;
 	}
@@ -71,18 +35,6 @@ public class VendaVO {
 		this.data = data;
 	}
 	
-	public String getCli() {
-		//para passar o calendar como string
-		String cli = cliente.getNome();
-		return cli;
-	}
-	
-	public String getResp() {
-		//para passar o calendar como string
-		String resp = funcionario.getNome();
-		return resp;
-	}
-	
 	public String getString() {
 		//para passar o calendar como string
 		SimpleDateFormat df1 = new SimpleDateFormat("MM");
@@ -92,19 +44,6 @@ public class VendaVO {
 
 	public double getValor() {
 		return valor;
-	}
-
-	public void setValor() {
-		// Irï¿½ salvar automaticamente o valor final da venda
-		// a partir dos dados presentes no carrinho
-		for (int i = 0; i < carrinho.size(); i++) {
-				valor = valor + (carrinho.get(i).getPreco() * carrinho.get(i).getQuantiPedido());
-		}
-	}
-	
-	public void zerarValor() {
-		// Usado para zerar o valor caso retornar para alteraÃ§Ãµes na compra
-		valor = 0;
 	}
 	
 	public void setValor(double valor) {
@@ -118,15 +57,7 @@ public class VendaVO {
 	
 	public void setCodigo(String codigo) {
 		//metodo usado para ajudar no dao
-		if (codigo != null) {
-			if (!codigo.isBlank()) {
-				this.codigo = codigo;
-			} else {
-				System.out.println("CÃ³digo invalido");
-			}
-		} else {
-			System.out.println("Codigo invalido");
-		}
+		this.codigo = codigo;
 	}
 	
 	public void setCodigo() {
@@ -151,16 +82,21 @@ public class VendaVO {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	public TratamentoVO getTratamento() {
-		return tratamento;
+
+	public String getCpfCli() {
+		return cpfCli;
 	}
 
-	public void setTratamento(TratamentoVO tratamento) {
-		if (tratamento != null) {
-			this.tratamento = tratamento; 
-		} else {
-			System.out.println("OperaÃ§Ã£o inválida");
-		}
+	public void setCpfCli(String cpfCli) {
+		this.cpfCli = cpfCli;
 	}
+
+	public String getCpfFunc() {
+		return cpfFunc;
+	}
+
+	public void setCpfFunc(String cpfFunc) {
+		this.cpfFunc = cpfFunc;
+	}
+
 }

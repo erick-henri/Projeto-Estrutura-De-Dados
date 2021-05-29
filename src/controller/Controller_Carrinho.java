@@ -81,10 +81,9 @@ public class Controller_Carrinho implements Initializable {
 					adicionar.setQuantiPedido(Integer.parseInt(quantidadeAdicionada.getText()));
 					int id = carrinhoVenda.indexOf(adicionar);
 					carrinhoVenda.set(id, adicionar);
-					mensagem.setTextFill(Color.web("green"));
-					mensagem.setText("Produto adicionado ao carrinho");
-					mensagem.setVisible(true);
-					preenxer();
+					Controller_Carrinho.setCarrinhoVenda(carrinhoVenda);
+					Controller_Carrinho.setCliente(cliente);
+					Telas.carrinho();
 				} catch (NumberFormatException e1) {
 					mensagem.setTextFill(Color.web("red"));
 					mensagem.setText("Digitar apenas números em quantidade.");
@@ -93,6 +92,9 @@ public class Controller_Carrinho implements Initializable {
 					mensagem.setTextFill(Color.web("red"));
 					mensagem.setText(e1.getMessage());
 					mensagem.setVisible(true);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			} else {
 				mensagem.setTextFill(Color.web("red"));
@@ -120,13 +122,12 @@ public class Controller_Carrinho implements Initializable {
 					mensagem.setTextFill(Color.web("green"));
 					if (Integer.parseInt(quantidadeAdicionada.getText()) == remover.getQuantiPedido() + Integer.parseInt(quantidadeAdicionada.getText())){
 						carrinhoVenda.remove(remover);
-						mensagem.setText("Produto removido do carrinho");
 					} else {
 						carrinhoVenda.set(id, remover);
-						mensagem.setText("Diminuida a quantidade do produto no carrinho");
 					}
-					mensagem.setVisible(true);
-					preenxer();
+					Controller_Carrinho.setCarrinhoVenda(carrinhoVenda);
+					Controller_Carrinho.setCliente(cliente);
+					Telas.carrinho();
 				} catch (NumberFormatException e1) {
 					mensagem.setTextFill(Color.web("red"));
 					mensagem.setText("Digitar apenas números em quantidade.");
@@ -150,13 +151,14 @@ public class Controller_Carrinho implements Initializable {
 
 	@FXML
 	public void concluir(ActionEvent event) throws Exception {
-
+		Controller_ConcluirVenda.setCarrinhoVenda(carrinhoVenda);
+		Controller_ConcluirVenda.setCliente(cliente);
+		Telas.concluirVenda();
 	}
 
 	@FXML
 	public void voltar(ActionEvent event) throws Exception {
 		Controller_CarrinhoVenda.setCliente(cliente);
-		Controller_CarrinhoVenda.setCarrinhoVenda(carrinhoVenda);
 		Telas.carrinhoVenda();
 	}
 

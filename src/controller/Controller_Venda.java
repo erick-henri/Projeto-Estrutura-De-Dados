@@ -21,8 +21,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
+import myList.ListaEncadeadaDupla;
 import Model.BO.ClienteBO;
+import Model.BO.ProdutoBO;
 import Model.VO.PessoaVO;
+import Model.VO.ProdutoVO;
 import view.Telas;
 
 public class Controller_Venda implements Initializable{
@@ -129,7 +132,10 @@ public class Controller_Venda implements Initializable{
 		ClienteVO cliente = lista.getSelectionModel().getSelectedItem();
 		if (cliente != null) {
 			ClienteBO aux = new ClienteBO();
+			ProdutoBO produtos = new ProdutoBO();
 			Controller_CarrinhoVenda.setCliente(aux.findById(cliente));
+			Controller_CarrinhoVenda.setCarrinhoVenda(new ListaEncadeadaDupla<ProdutoVO>());
+			Controller_CarrinhoVenda.setListar(produtos.listar());
 			Telas.carrinhoVenda();
 		}
 		mensagem.setTextFill(Color.web("red"));

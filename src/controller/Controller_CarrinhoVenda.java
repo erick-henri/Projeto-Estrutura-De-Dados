@@ -30,6 +30,7 @@ public class Controller_CarrinhoVenda implements Initializable {
 	private static ClienteVO cliente;
 	private static MyInterfaceList<ProdutoVO> carrinhoVenda = new ListaEncadeadaDupla<ProdutoVO>();
 	private ObservableList<String> cb;
+	private static MyInterfaceList<ProdutoVO> listar = new ListaEncadeadaDupla<ProdutoVO>();
 
 	@FXML
 	private TableView<ProdutoVO> lista;
@@ -67,8 +68,8 @@ public class Controller_CarrinhoVenda implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ProdutoBO aux = new ProdutoBO();
-		ObservableList<ProdutoVO> produtos = FXCollections.observableArrayList(aux.listar());
+		
+		ObservableList<ProdutoVO> produtos = FXCollections.observableArrayList(getListar());
 		nome.setCellValueFactory(new PropertyValueFactory<ProdutoVO, String>("nome"));
 		quantidade.setCellValueFactory(new PropertyValueFactory<ProdutoVO, Integer>("quantidade"));
 		preco.setCellValueFactory(new PropertyValueFactory<ProdutoVO, Double>("preco"));
@@ -91,8 +92,9 @@ public class Controller_CarrinhoVenda implements Initializable {
 		if (adicionar != null) {
 			if (quantidadeAdicionada.getText() != null && !quantidadeAdicionada.getText().isEmpty()) {
 				try {
+				ProdutoBO aux = new ProdutoBO();
 				adicionar.setQuantiPedido(Integer.parseInt(quantidadeAdicionada.getText()));
-				if (carrinhoVenda.contains(adicionar)) {
+				if (carrinhoVenda.contains(adicionar)) {		
 					int id = carrinhoVenda.indexOf(adicionar);
 					carrinhoVenda.set(id, adicionar);
 				} else {
@@ -131,7 +133,10 @@ public class Controller_CarrinhoVenda implements Initializable {
 	
 	@FXML
 	public void concluir(ActionEvent event) throws Exception {
-		
+		Controller_ConcluirVenda.setCarrinhoVenda(carrinhoVenda);
+		Controller_ConcluirVenda.setCliente(cliente);
+		Controller_ConcluirVenda.setCarrinhoV(true);
+		Telas.concluirVenda();
 	}
 
 	@FXML
@@ -192,7 +197,6 @@ public class Controller_CarrinhoVenda implements Initializable {
 	public static MyInterfaceList<ProdutoVO> getCarrinhoVenda() {
 		return carrinhoVenda;
 	}
-
 	
 	public static void setCarrinhoVenda(MyInterfaceList<ProdutoVO> carrinhoVenda) {
 		Controller_CarrinhoVenda.carrinhoVenda = carrinhoVenda;
@@ -204,6 +208,14 @@ public class Controller_CarrinhoVenda implements Initializable {
 
 	public static void setCliente(ClienteVO cliente) {
 		Controller_CarrinhoVenda.cliente = cliente;
+	}
+
+	public static MyInterfaceList<ProdutoVO> getListar() {
+		return listar;
+	}
+
+	public static void setListar(MyInterfaceList<ProdutoVO> listar) {
+		Controller_CarrinhoVenda.listar = listar;
 	}
 
 }
