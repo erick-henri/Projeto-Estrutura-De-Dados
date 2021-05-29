@@ -23,6 +23,10 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 			this.prev = null;
 		}
 
+		public void setId(int id) {
+			this.id = id;
+		}
+
 	}
 
 	class MyIterator implements Iterator<O> {
@@ -107,7 +111,7 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 		size++;
 		return true;
 	}
-	
+
 	@Override
 	public boolean remove(Object valor) {
 		int id = searchByValue(valor);
@@ -129,33 +133,48 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 		if (head == tail) {
 			head = null;
 			tail = null;
+			idNext = 0;
 		} else {
 
 			if (head == removido) {
+				int aux = 0;
 				head = head.next;
 				head.prev = null;
 				removido.next = null;
+				Node x = head;
+				while (aux != (size - 2)) {
+					x.setId(aux);
+					x = x.next;
+					aux++;
+				}
+				idNext--;
 			} else if (tail == removido) {
 				tail.prev = null;
 				tail = anterior;
 				tail.next = null;
-
+				idNext--;
 			} else {
+				int aux = removido.id;
 				removido.next = null; // retirar o item removido da lista
 				removido.prev = null;
-
+				Node x = posterior;
 				if (anterior != null) { // primeiro verifica se existe um item anterior
 					anterior.next = posterior; // e adiciona o prev do removido nele
 				}
 
 				if (posterior != null) { // primeiro verifica se existe um item posterior
 					posterior.prev = anterior; // e adiciona o next do removido nele
+					while (aux != tail.id+1) {
+						x.setId(aux);
+						x = x.next;
+						aux++;
+					}
 				}
+				idNext--;
 			}
 		}
 
 		size--;
-		System.out.println("Valor removido!");
 		return false;
 	}
 
@@ -171,7 +190,8 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 		}
 
 		if (anterior == null) {
-			//System.out.println("Valor não pode ser adicionado, pelo criteiro estar invalido!");
+			// System.out.println("Valor não pode ser adicionado, pelo criteiro estar
+			// invalido!");
 		} else {
 			Node novo = new Node(valor);
 			novo.next = anterior.next;
@@ -272,7 +292,7 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 		}
 		return false;
 	}
-	
+
 	// Metodos não usados
 
 	@Override
@@ -322,8 +342,6 @@ public class ListaEncadeadaDupla<O> implements MyInterfaceList<O> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 	@Override
 	public boolean addAll(Collection<? extends O> arg0) {
