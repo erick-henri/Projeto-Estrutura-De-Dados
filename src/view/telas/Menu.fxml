@@ -27,7 +27,7 @@
             <Image url="@../imagens/logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="sair" alignment="CENTER" layoutX="209.0" layoutY="319.0" mnemonicParsing="false" onAction="#sair" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: #42FF55; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Sair">
+      <Button fx:id="sair" alignment="CENTER" layoutX="210.0" layoutY="328.0" mnemonicParsing="false" onAction="#sair" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: DCFE54; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Sair">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -35,7 +35,7 @@
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="produtos" alignment="CENTER" layoutX="209.0" layoutY="276.0" mnemonicParsing="false" onAction="#produto" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: DCFE54; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Produtos">
+      <Button fx:id="produtos" alignment="CENTER" layoutX="210.0" layoutY="257.0" mnemonicParsing="false" onAction="#produto" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: DCFE54; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Produtos">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -43,7 +43,7 @@
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="clientes" alignment="CENTER" layoutX="209.0" layoutY="233.0" mnemonicParsing="false" onAction="#clientes" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: #42FF55; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Clientes">
+      <Button fx:id="clientes" alignment="CENTER" layoutX="210.0" layoutY="221.0" mnemonicParsing="false" onAction="#clientes" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: #42FF55; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Clientes">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -51,7 +51,15 @@
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="funcionarios" alignment="CENTER" layoutX="210.0" layoutY="191.0" mnemonicParsing="false" onAction="#funcionarios" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: DCFE54; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Funcionários">
+      <Button fx:id="funcionarios" alignment="CENTER" layoutX="210.0" layoutY="186.0" mnemonicParsing="false" onAction="#funcionarios" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: DCFE54; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Funcionários">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="relatorios" alignment="CENTER" layoutX="209.0" layoutY="292.0" mnemonicParsing="false" onAction="#relatorios" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: #42FF55; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Relatórios">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

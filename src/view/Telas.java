@@ -1,5 +1,6 @@
 package view;
 
+import Model.VO.UsuarioVO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,7 @@ import javafx.stage.Stage;
 
 public class Telas extends Application {
 	private static Stage primaryStage;
+	private static UsuarioVO logado;
 
 	public static void main(String... args) {
 		launch();
@@ -41,6 +43,12 @@ public class Telas extends Application {
 	////TELA DE TRATAMENTO///
 	public static void telaTratamento() throws Exception {
 		Parent root = FXMLLoader.load(Telas.class.getResource("telas/Tratamento.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void finalTratamento() throws Exception {
+		Parent root = FXMLLoader.load(Telas.class.getResource("telas/FinalTratamento.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	}
@@ -168,7 +176,34 @@ public class Telas extends Application {
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	}
+	
+	public static void concluirVenda() throws Exception {
+		Parent root = FXMLLoader.load(Telas.class.getResource("telas/ConcluirVenda.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void finalVenda() throws Exception {
+		Parent root = FXMLLoader.load(Telas.class.getResource("telas/FinalVenda.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
 	////////////////////////
+	
+	//TELAS DE RELATORIO///
+	public static void relatorioVenda() throws Exception {
+		Parent root = FXMLLoader.load(Telas.class.getResource("telas/RelatorioVenda.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void relatorioTratamento() throws Exception {
+		Parent root = FXMLLoader.load(Telas.class.getResource("telas/RelatorioTratamento.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	//////////////////////
 
 	public static Stage getPrimaryStage() {
 		return primaryStage;
@@ -176,6 +211,14 @@ public class Telas extends Application {
 
 	public static void setPrimaryStage(Stage primaryStage) {
 		Telas.primaryStage = primaryStage;
+	}
+
+	public static UsuarioVO getLogado() {
+		return logado;
+	}
+
+	public static void setLogado(UsuarioVO logado) {
+		Telas.logado = logado;
 	}
 
 }

@@ -65,7 +65,7 @@
             <Font name="Verdana" size="13.0" />
          </font>
       </Label>
-      <TextField layoutX="70.0" layoutY="246.0" prefHeight="25.0" prefWidth="464.0" promptText="Preço do tratamento...">
+      <TextField fx:id="valor" layoutX="70.0" layoutY="246.0" prefHeight="25.0" prefWidth="464.0" promptText="Preço do tratamento...">
          <font>
             <Font name="Verdana" size="13.0" />
          </font>

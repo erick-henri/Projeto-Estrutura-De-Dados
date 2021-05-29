@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="662.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_FinalVenda">
+   <children>
+      <ImageView fitHeight="157.0" fitWidth="655.0" layoutX="4.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/barra.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="236.0" layoutY="176.0" text="Venda Concluída">
+         <font>
+            <Font name="Verdana Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="voltar" alignment="CENTER" layoutX="228.0" layoutY="245.0" mnemonicParsing="false" onAction="#voltar" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #A8FF39; -fx-background-radius: 10px; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,1) , 5, 0.0 , 0 , 1 );" text="Voltar para Inicio">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</Pane>
