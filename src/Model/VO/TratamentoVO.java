@@ -14,7 +14,7 @@ public class TratamentoVO {
 	private String descricao;
 	private String codigo;
 	private double valor;
-	
+
 	public long getId() {
 		return id;
 	}
@@ -22,25 +22,26 @@ public class TratamentoVO {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	public Calendar getData() {
 		return data;
 	}
-	
+
 	public String getString() {
-		//para passar o calendar como string
+		// A data como String
 		SimpleDateFormat df1 = new SimpleDateFormat("MM");
-		String dataFinal = data.get(Calendar.YEAR) + "-" + df1.format(data.get(Calendar.MONTH)) + "-" +data.get(Calendar.DAY_OF_MONTH);
+		String dataFinal = data.get(Calendar.YEAR) + "-" + df1.format(data.get(Calendar.MONTH)) + "-"
+				+ data.get(Calendar.DAY_OF_MONTH);
 		return dataFinal;
 	}
-	
-	public void setData (Calendar data) {
+
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 
 	public void setData() {
 		// Utilizando a classe calendar para gerar todas as
-		// informaÃ§Ãµes referente a data da compra.
+		// informações referente a data que o tratamento foi feito.
 		Calendar data = Calendar.getInstance();
 		data.get(Calendar.YEAR);
 		data.get(Calendar.MONTH);
@@ -51,7 +52,6 @@ public class TratamentoVO {
 		this.data = data;
 	}
 
-		
 	public String getDescricao() {
 		return descricao;
 	}
@@ -61,17 +61,17 @@ public class TratamentoVO {
 			if ((descricao.length() <= 500) && (!descricao.isEmpty())) {
 				this.descricao = descricao;
 			} else {
-				throw new ExceptionCampoInvalido("DescriÃ§Ã£o nÃ£o pode ter mais do que 500 caracteres");
+				throw new ExceptionCampoInvalido("Descrição não pode ter mais do que 500 caracteres.");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Digite alguma descriÃ§Ã£o.");
+			throw new ExceptionCampoInvalido("Digite alguma descrição.");
 		}
 	}
-	
+
 	public double getValor() {
 		return valor;
 	}
-	
+
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
@@ -91,28 +91,27 @@ public class TratamentoVO {
 	public void setCpfFunc(String cpfFunc) {
 		this.cpfFunc = cpfFunc;
 	}
-	
+
 	public String getCodigo() {
 		return codigo;
 	}
-	
+
 	public void setCodigo(String codigo) {
-		//metodo usado para ajudar no dao
+		// Usado para ajudar no Banco de Dados
 		this.codigo = codigo;
 	}
-	
+
 	public void setCodigo() {
-		// esse código está¡ gerando automaticamente um código para a venda
-		// são que antes de adicionar, tera que ser feita uma consulta no
-		// banco de dados para saber se o código jÃ¡ foi usado ou não
-		// já que estamos falando de valores aleatorios
+		// Geramento automatico de código de tratamento
 		Random r = new Random();
 		String aux = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 		String codigo = "";
+
 		while (codigo.length() < 35) {
-			// irÃ¡ adicionar caractere por caractere a partir da string aux
+			// Irá adicionar Caracter por Caractere
 			codigo = codigo + aux.charAt(r.nextInt(62));
 		}
+
 		this.codigo = codigo;
 	}
 }

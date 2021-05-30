@@ -15,25 +15,25 @@ public class UsuarioVO extends PessoaVO {
 	}
 
 	public void setUsuarioAux(String usuario) throws ExceptionLoginExistente {
-		// usado para verificar se o usuario já existe no banco de dados
+		//Verificar se o Usuario existe no Banco de Dados.
 		UsuarioDAO aux = new UsuarioDAO();
 		UsuarioVO x = new UsuarioVO();
 		try {
 			x.setUsuario(usuario);
 		} catch (ExceptionCampoInvalido e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		if (aux.buscarLogin(x)) {
-			throw new ExceptionLoginExistente("Usuário já existe");
+			throw new ExceptionLoginExistente("Usuário já existe.");
 		} else return;
 	}
+	
 	public void setUsuario(String usuario) throws ExceptionCampoInvalido {
 		if ((usuario != null) && (!usuario.isEmpty())) {
 			this.usuario = usuario;
 		} else {
-			throw new ExceptionCampoInvalido("Usuário inválido");
+			throw new ExceptionCampoInvalido("Usuário inválido.");
 		}
 	}
 
@@ -46,10 +46,10 @@ public class UsuarioVO extends PessoaVO {
 			if (senha.length() >= 5) {
 				this.senha = senha;
 			} else {
-				throw new ExceptionCampoInvalido("Senha precisa ter pelo menos 5 caracteres");
+				throw new ExceptionCampoInvalido("Senha precisa ter pelo menos 5 caracteres.");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Senha inválida");
+			throw new ExceptionCampoInvalido("Senha inválida.");
 		}
 	}
 

@@ -19,7 +19,7 @@ public abstract class PessoaVO {
 		if ((nome != null) && (!nome.isEmpty())) {
 			this.nome = nome;
 		} else {
-			throw new ExceptionCampoInvalido("Nome invÃ¡lido");
+			throw new ExceptionCampoInvalido("Nome inválido");
 		}
 	}
 
@@ -35,6 +35,7 @@ public abstract class PessoaVO {
 			throw new ExceptionCampoInvalido("CPF já existe no banco de dados.");
 		} else return;
 	}
+	
 	public void setCpf(String cpf) throws ExceptionCampoInvalido {
 		// Validando
 		if ((cpf != null) && (!cpf.isEmpty())) {
@@ -48,19 +49,19 @@ public abstract class PessoaVO {
 						this.cpf = cpf;
 					} else {
 						// Digitar números repetidos
-						throw new ExceptionCampoInvalido("CPF não ser apenas números iguais");
+						throw new ExceptionCampoInvalido("CPF não ser apenas números iguais.");
 					}
 				} else {
 					// Digitou uma letra
-					throw new ExceptionCampoInvalido("CPF só pode ter números");
+					throw new ExceptionCampoInvalido("CPF só pode ter números.");
 				}
 			} else {
 				// Tamanho inválido
-				throw new ExceptionCampoInvalido("CPF tem que ter pelo menos 11 caracteres");
+				throw new ExceptionCampoInvalido("CPF tem que ter pelo menos 11 caracteres.");
 			}
 		} else {
 			// Se a variavel vier vazia
-			throw new ExceptionCampoInvalido("CPF inválido");
+			throw new ExceptionCampoInvalido("CPF inválido.");
 		}
 	}
 
@@ -70,23 +71,22 @@ public abstract class PessoaVO {
 
 	public void setEndereco(String estado, String cidade, String bairro, String rua, String numero)
 			throws ExceptionCampoInvalido {
-		// Irá¡ verificar se todos os dados passados estão com
-		// alguma coisa escrita para então ser aceito
+			//Irá verificar se todos os campos estão preenxidos
 		if ((estado != null) && (cidade != null) && (bairro != null) && (rua != null) && (numero != null)) {
 			if ((!estado.isEmpty()) && (!cidade.isEmpty()) && (!bairro.isEmpty()) && (!rua.isEmpty())
 					&& (!numero.isEmpty())) {
 				this.endereco = bairro + ", " + rua + ", " + numero + ", " + cidade + ", " + estado;
-				// salvar tudo separado por , para ficar mais facil de verificar depois
+				//Salvar tudo separado por , para ficar mais facil de verificar depois
 			} else {
-				throw new ExceptionCampoInvalido("Erro ao salvar o enderço");
+				throw new ExceptionCampoInvalido("Erro ao salvar o enderço.");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Erro ao salvar o endereço");
+			throw new ExceptionCampoInvalido("Erro ao salvar o endereço.");
 		}
 	}
 
 	public void setEndereco(String endereco) {
-		// Construtor set usado como auxiliar para o bd
+		// Construtor set usado como auxiliar na hora de buscar no BD o endereço
 		this.endereco = endereco;
 	}
 
@@ -95,19 +95,18 @@ public abstract class PessoaVO {
 	}
 
 	public void setTelefone(String telefone) throws ExceptionCampoInvalido {
-		// Ainda vendo como fazer uma validação melhor
 		if ((telefone != null) && (!telefone.isEmpty())) {
 			if (telefone.length() == 11) {
 				if (telefone.substring(0, 10).matches("[0-9]*")) {
 					this.telefone = telefone;
 				} else {
-					throw new ExceptionCampoInvalido("Digitar apenas números em telefone");
+					throw new ExceptionCampoInvalido("Digitar apenas números em telefone.");
 				}
 			} else {
-				throw new ExceptionCampoInvalido("Telefone tem que ter 11 digitos");
+				throw new ExceptionCampoInvalido("Telefone tem que ter 11 digitos.");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Telefone inválido");
+			throw new ExceptionCampoInvalido("Telefone inválido.");
 		}
 
 	}

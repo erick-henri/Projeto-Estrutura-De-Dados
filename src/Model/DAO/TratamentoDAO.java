@@ -105,6 +105,22 @@ public class TratamentoDAO extends BaseDAO<TratamentoVO> {
 		super.closeConnection();
 		return rs;
 	}
+	
+	public ResultSet findByCode(String vo) {
+		String sql = "select * from tratamento where codigo = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo);
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		super.closeConnection();
+		return rs;
+	}
 
 	@Override
 	public void editar(TratamentoVO vo) {

@@ -21,7 +21,7 @@ public class ProdutoVO {
 		if ((nome != null) && (!nome.isEmpty())) {
 			this.nome = nome;
 		} else {
-			throw new ExceptionCampoInvalido("Digite um nome v√°lido");
+			throw new ExceptionCampoInvalido("Digite um nome v·lido.");
 		}
 	}
 
@@ -34,10 +34,10 @@ public class ProdutoVO {
 			if ((descricao.length() <= 500) && (!descricao.isEmpty())) {
 				this.descricao = descricao;
 			} else {
-				throw new ExceptionCampoInvalido("Descri√ß√£o n√£o pode ter mais do que 500 caracteres");
+				throw new ExceptionCampoInvalido("DescriÁ„o do produto n„o pode ter mais do que 500 caracteres.");
 			}
 		} else {
-			throw new ExceptionCampoInvalido("Digite alguma coisa para descrever o produto");
+			throw new ExceptionCampoInvalido("Digite alguma coisa para descrever o produto.");
 		}
 	}
 
@@ -49,7 +49,7 @@ public class ProdutoVO {
 		if (preco > 0) {
 			this.preco = preco;
 		} else {
-			throw new ExceptionCampoInvalido("Digite um valor diferente de 0 para o pre√ßo");
+			throw new ExceptionCampoInvalido("Digite um valor diferente de 0 para o preÁo.");
 		}
 	}
 
@@ -66,13 +66,12 @@ public class ProdutoVO {
 	}
 
 	public void setQuantiPedido(int quantiPedido) throws ExceptionCampoInvalido {
-		// m√©dodo usado em vendaVO para vericar se a quantidade
-		// pedida √© aceita
+		//Verifica se a quantidade pedida na compra do produto È menor ou igual a que tem em estoque. 
 		if (quantiPedido > 0) {
 			if (quantiPedido + this.quantiPedido <= quantidade) {
 				this.quantiPedido += quantiPedido;
 			} else {
-				throw new ExceptionCampoInvalido("Quantidade do pedido n„o pode exceder o que tem em estoque");
+				throw new ExceptionCampoInvalido("Quantidade do pedido n„o pode exceder o que tem em estoque.");
 			}
 		}
 	}
@@ -92,9 +91,9 @@ public class ProdutoVO {
 	public void setPeso(double peso) throws ExceptionCampoInvalido {
 		if (peso > 0) {
 			this.peso = peso;
-			// verificar se o pre√ßo est√° sendo um valor positivo e maior que zero
+			//Verificar se o preÁo È um valor positivo e maior que 0
 		} else {
-			throw new ExceptionCampoInvalido("Digite algo maior que 0 para o peso do produto");
+			throw new ExceptionCampoInvalido("Digite algo maior que 0 para o peso do produto.");
 		}
 	}
 
@@ -114,7 +113,7 @@ public class ProdutoVO {
 		if ((codigo != null) && (!codigo.isEmpty())) {
 			this.codigo = codigo;
 		} else {
-			throw new ExceptionCampoInvalido("Digite uma informa√ß√£o v√°lida");
+			throw new ExceptionCampoInvalido("Digite um cÛfigo v·lido.");
 		}
 	}
 
@@ -124,7 +123,7 @@ public class ProdutoVO {
 		ProdutoVO x = new ProdutoVO();
 		x.setCodigo(codigo);
 		if (aux.verificarCodigo(x)) {
-			throw new ExceptionCampoInvalido("Serie j· existe no banco de dados");
+			throw new ExceptionCampoInvalido("CÛdigo j· existe no banco de dados.");
 		}
 	}
 }

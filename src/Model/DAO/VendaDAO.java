@@ -105,6 +105,22 @@ public class VendaDAO extends BaseDAO<VendaVO>{
 		return rs;
 	}
 	
+	public ResultSet findByCode(String vo) {
+		String sql = "select * from venda where codigo = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo);
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		super.closeConnection();
+		return rs;
+	}
+	
 	@Override
 	public void editar(VendaVO vo) {
 		// TODO Auto-generated method stub

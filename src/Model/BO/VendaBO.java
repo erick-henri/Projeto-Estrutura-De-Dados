@@ -118,6 +118,28 @@ public class VendaBO extends BaseBO<VendaVO>{
 
 		return vendas;
 	}
+	
+	public VendaVO findByCode(String vo) {
+		ResultSet rs = venda.findByCode(vo);
+		VendaVO aux = new VendaVO();
+		try {
+			while (rs.next()) {
+				aux.setId(rs.getLong("idvenda"));
+				aux.setValor(rs.getDouble("valor"));
+				Date data = (rs.getDate("data"));
+				Calendar aux1 = Calendar.getInstance();
+				aux1.setTime(data);
+				aux.setData(aux1);
+				aux.setCodigo(rs.getString("codigo"));
+				aux.setCpfCli(rs.getString("cpfCli"));
+				aux.setCpfFunc(rs.getString("cpffunc"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return aux;
+	}
 
 	@Override
 	public void editar(VendaVO vo) {
