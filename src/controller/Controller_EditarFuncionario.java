@@ -56,6 +56,10 @@ public class Controller_EditarFuncionario implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+		if (editando.getUsuario().equals("Gerente")) {
+			usuario.setDisable(true);
+		}
 		nome.setText(editando.getNome());
 		cpf.setText(editando.getCpf());
 		telefone.setText(editando.getTelefone());

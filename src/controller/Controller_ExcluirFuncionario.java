@@ -71,7 +71,11 @@ public class Controller_ExcluirFuncionario implements Initializable{
     	if(confirmar) {
 			UsuarioBO deletando = new UsuarioBO();
 			deletando.excluir(excluindo);
-			Telas.listarFuncionario();
+			if (Telas.getLogado().getUsuario().equals("Gerente")) {
+				Telas.listarFuncionario();
+			} else {
+				Telas.telaLogin();
+			}
 		} else {
 			mensagem.setTextFill(Color.web("red"));
 			mensagem.setText("Deseja mesmo deletar o funcionário? \n(Essa ação não poderá ser desfeita)");

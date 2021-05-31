@@ -84,12 +84,25 @@ public class Controller_ListarFuncionario implements Initializable {
 		UsuarioVO editar = lista.getSelectionModel().getSelectedItem();
 		if (editar != null) {
 			UsuarioBO aux = new UsuarioBO();
-			Controller_EditarFuncionario.setEditando(aux.findById(editar));
-			Telas.editarFuncionario();
+			if (aux.findById(editar).getUsuario().equals(Telas.getLogado().getUsuario())) {
+				Controller_EditarFuncionario.setEditando(aux.findById(editar));
+				Telas.editarFuncionario();
+			} else {
+				mensagem.setTextFill(Color.web("red"));
+				mensagem.setText("Você só pode editar sua conta.");
+				mensagem.setVisible(true);
+			}
+
+			if (Telas.getLogado().getUsuario().equals("Gerente")) {
+				Controller_EditarFuncionario.setEditando(aux.findById(editar));
+				Telas.editarFuncionario();
+			}
+
+		} else {
+			mensagem.setTextFill(Color.web("red"));
+			mensagem.setText("Selecione um item para excluir");
+			mensagem.setVisible(true);
 		}
-		mensagem.setTextFill(Color.web("red"));
-		mensagem.setText("Selecione um item para editar");
-		mensagem.setVisible(true);
 	}
 
 	@FXML
@@ -97,12 +110,30 @@ public class Controller_ListarFuncionario implements Initializable {
 		UsuarioVO excluir = lista.getSelectionModel().getSelectedItem();
 		if (excluir != null) {
 			UsuarioBO aux = new UsuarioBO();
-			Controller_ExcluirFuncionario.setExcluindo(aux.findById(excluir));
-			Telas.excluirFuncionario();
+
+			if (Telas.getLogado().getUsuario().equals("Gerente")) {
+				if (!aux.findById(excluir).getUsuario().equals("Gerente")) {
+					Controller_ExcluirFuncionario.setExcluindo(aux.findById(excluir));
+					Telas.excluirFuncionario();
+				} else {
+					mensagem.setTextFill(Color.web("red"));
+					mensagem.setText("Conta não pode ser excluida.");
+					mensagem.setVisible(true);
+				}
+			} else if (aux.findById(excluir).getUsuario().equals(Telas.getLogado().getUsuario())) {
+				Controller_ExcluirFuncionario.setExcluindo(aux.findById(excluir));
+				Telas.excluirFuncionario();
+			} else {
+				mensagem.setTextFill(Color.web("red"));
+				mensagem.setText("Você só pode excluir sua conta.");
+				mensagem.setVisible(true);
+			}
+
+		} else {
+			mensagem.setTextFill(Color.web("red"));
+			mensagem.setText("Selecione um item para excluir");
+			mensagem.setVisible(true);
 		}
-		mensagem.setTextFill(Color.web("red"));
-		mensagem.setText("Selecione um item para excluir");
-		mensagem.setVisible(true);
 	}
 
 	@FXML
