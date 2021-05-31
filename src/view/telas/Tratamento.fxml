@@ -19,12 +19,12 @@
             <Font name="Verdana Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="nomeAnimal" layoutX="70.0" layoutY="101.0" text="NomeAnimal">
+      <Label fx:id="nomeAnimal" layoutX="70.0" layoutY="101.0" prefHeight="16.0" prefWidth="464.0" text="NomeAnimal">
          <font>
             <Font name="Verdana" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="nomeCliente" layoutX="69.0" layoutY="127.0" prefHeight="16.0" prefWidth="84.0" text="NomeCliente">
+      <Label fx:id="nomeCliente" layoutX="69.0" layoutY="127.0" prefHeight="16.0" prefWidth="464.0" text="NomeCliente">
          <font>
             <Font name="Verdana" size="13.0" />
          </font>
@@ -52,7 +52,7 @@
       </Button>
       <Label fx:id="mensagem" alignment="CENTER" layoutX="4.0" layoutY="73.0" prefHeight="17.0" prefWidth="595.0" text="Label" visible="false">
          <font>
-            <Font name="Verdana" size="13.0" />
+            <Font name="Verdana Bold" size="13.0" />
          </font>
       </Label>
       <TextArea fx:id="descricao" layoutX="70.0" layoutY="167.0" prefHeight="57.0" prefWidth="464.0" promptText="Falor o que será feito com o animal (tipo de banho, tosa, etc)...">

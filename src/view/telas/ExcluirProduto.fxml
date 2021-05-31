@@ -14,7 +14,7 @@
             <Image url="@../imagens/barra.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="TOP" layoutX="214.0" layoutY="28.0" text="Excluir Produto">
+      <Label alignment="CENTER" contentDisplay="TOP" layoutX="231.0" layoutY="28.0" text="Excluir Produto">
          <font>
             <Font name="Verdana Bold" size="20.0" />
          </font>
@@ -113,7 +113,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="mensagem" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="53.0" prefHeight="34.0" prefWidth="461.0" text="Label" wrapText="true">
+      <Label fx:id="mensagem" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="53.0" prefHeight="34.0" prefWidth="461.0" text="Label" visible="false" wrapText="true">
          <font>
             <Font name="Verdana Bold" size="13.0" />
          </font>
